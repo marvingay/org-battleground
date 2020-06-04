@@ -1,3 +1,9 @@
+# ORG Battleground
+
+This is a project that will help faciliate the organization and operation of "Online Reality Games" -- featuring a dashboard for the players, leaderboards, and some interactive challenges.
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
