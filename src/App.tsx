@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './App.scss';
 import { Avatar, Container, Drawer, Divider, List, ListItem, ListItemIcon, ListItemText, Typography } from '@material-ui/core';
+import DateTime from './components/DateTime';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import SettingsIcon from '@material-ui/icons/Settings';
 import MessageIcon from '@material-ui/icons/Message';
@@ -11,14 +12,7 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import HelpIcon from '@material-ui/icons/Help';
 
 const App: React.FC = () => {
-  const [time, setTime] = useState('');
-  useEffect(() => {
-    const timeInterval = setInterval(() => {
-      const timeDate = new Date().toLocaleString();
-      setTime(timeDate);
-    }, 1000);
-    return () => clearInterval(timeInterval);
-  }, []);
+
   return (
     <Drawer open variant="permanent">
       <List>
@@ -82,7 +76,7 @@ const App: React.FC = () => {
           <ListItemText>Log Out</ListItemText>
         </ListItem>
         <ListItem>
-          {time}
+          <DateTime />
         </ListItem>
       </List>
     </Drawer>
