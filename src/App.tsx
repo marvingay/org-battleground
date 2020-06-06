@@ -1,85 +1,15 @@
 import React from 'react';
 import './App.scss';
-import { Avatar, Container, Drawer, Divider, List, ListItem, ListItemIcon, ListItemText, Typography } from '@material-ui/core';
-import DateTime from './components/DateTime';
-import DashboardIcon from '@material-ui/icons/Dashboard';
-import SettingsIcon from '@material-ui/icons/Settings';
-import MessageIcon from '@material-ui/icons/Message';
-import NotificationsIcon from '@material-ui/icons/Notifications';
-import PeopleIcon from '@material-ui/icons/People';
-import AnnouncementIcon from '@material-ui/icons/Announcement';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import HelpIcon from '@material-ui/icons/Help';
+import { Grid } from '@material-ui/core';
+import Sidebar from './components/Sidebar';
 
 const App: React.FC = () => {
 
   return (
-    <Drawer open variant="permanent">
-      <List>
-        <Container>
-          <Typography variant="h4">Title</Typography>
-        </Container>
-        <Divider />
-        <ListItem>
-          <Avatar alt="John Doe" src="#" />{' '}
-          <Typography variant="h6">johndoe</Typography>
-        </ListItem>
-        <Divider />
+    <Grid container spacing={1}>
+      <Sidebar />
+    </Grid>
 
-        <ListItem>
-          <ListItemIcon>
-            <DashboardIcon />
-          </ListItemIcon>
-          <ListItemText>Dashboard</ListItemText>
-        </ListItem>
-        <ListItem>
-          <ListItemIcon>
-            <AnnouncementIcon />
-          </ListItemIcon>
-          <ListItemText>Announcements</ListItemText>
-        </ListItem>
-        <ListItem>
-          <ListItemIcon>
-            <PeopleIcon />
-          </ListItemIcon>
-          <ListItemText>Friends</ListItemText>
-        </ListItem>
-
-        <ListItem>
-          <ListItemIcon>
-            <MessageIcon />
-          </ListItemIcon>
-          <ListItemText>Messages</ListItemText>
-        </ListItem>
-        <ListItem>
-          <ListItemIcon>
-            <NotificationsIcon />
-          </ListItemIcon>
-          <ListItemText>Notifications</ListItemText>
-        </ListItem>
-        <ListItem>
-          <ListItemIcon>
-            <SettingsIcon />
-          </ListItemIcon>
-          <ListItemText>Settings</ListItemText>
-        </ListItem>
-        <ListItem>
-          <ListItemIcon>
-            <HelpIcon />
-          </ListItemIcon>
-          <ListItemText>Help</ListItemText>
-        </ListItem>
-        <ListItem>
-          <ListItemIcon>
-            <ExitToAppIcon />
-          </ListItemIcon>
-          <ListItemText>Log Out</ListItemText>
-        </ListItem>
-        <ListItem>
-          <DateTime />
-        </ListItem>
-      </List>
-    </Drawer>
   );
 }
 
