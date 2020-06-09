@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Typography from '@material-ui/core/Typography';
 
 const DateTime: React.FC = () => {
   const [time, setTime] = useState('');
@@ -11,9 +12,9 @@ const DateTime: React.FC = () => {
     return () => clearInterval(timeInterval);
   }, []);
   return (
-    <div>
+    <Typography variant='subtitle2' gutterBottom>
       {time}
-    </div>
+    </Typography>
   )
 }
 
