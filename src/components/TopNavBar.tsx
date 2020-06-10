@@ -13,7 +13,6 @@ const useStyles = makeStyles((theme) => ({
 
 const TopNavBar: React.FC = () => {
   const classes = useStyles();
-
   const [pageTitle, setPageTitle] = useState('Announcements');
 
   return (
