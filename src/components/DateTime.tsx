@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 
 const DateTime: React.FC = () => {
-  const [time, setTime] = useState('');
+  const [time, setTime] = useState(new Date().toLocaleString());
+
 
   useEffect(() => {
     const timeInterval = setInterval(() => {
