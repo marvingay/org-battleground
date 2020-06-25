@@ -11,12 +11,6 @@ import {
 import NavItem from './NavItem';
 import DateTime from './DateTime';
 import { navItem } from '../navigation';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link as RLink,
-} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   logo: {
@@ -34,34 +28,32 @@ const useStyles = makeStyles((theme) => ({
 const Sidebar = () => {
   const classes = useStyles();
   return (
-    <Router>
-      <Hidden smDown>
-        <Grid item md={3}>
-          <Drawer open variant='permanent'>
-            <Container className={classes.logo}>
-              <Typography variant='h4' gutterBottom>
-                ORG BG
+    <Hidden smDown>
+      <Grid item md={3}>
+        <Drawer open variant='permanent'>
+          <Container className={classes.logo}>
+            <Typography variant='h4' gutterBottom>
+              ORG BG
               </Typography>
-            </Container>
+          </Container>
 
-            <Container className={classes.user}>
-              <Typography variant='h5' display='block' gutterBottom>
-                Username
+          <Container className={classes.user}>
+            <Typography variant='h5' display='block' gutterBottom>
+              Username
               </Typography>
-            </Container>
+          </Container>
 
-            <List className={classes.sideBar}>
-              {navItem.map((item, idx) => (
-                <NavItem key={`id${idx}`} text={item.text} icon={item.icon} />
-              ))}
-            </List>
-            <Container id='DateTime'>
-              <DateTime />
-            </Container>
-          </Drawer>
-        </Grid>
-      </Hidden>
-    </Router>
+          <List className={classes.sideBar}>
+            {navItem.map((item, idx) => (
+              <NavItem key={`id${idx}`} text={item.text} icon={item.icon} />
+            ))}
+          </List>
+          <Container id='DateTime'>
+            <DateTime />
+          </Container>
+        </Drawer>
+      </Grid>
+    </Hidden>
   );
 };
 

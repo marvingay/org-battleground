@@ -10,8 +10,12 @@ const Home: React.FC = () => {
     <Grid container item xs={12} md={9}>
       <TopNavBar />
       <Switch>
-        <Route exact path='/announcements' component={Announcements} />
-        <Route exact path='/dashboard' component={Test} />
+        <Route exact path={'/announcements'} >
+          <Announcements />
+        </Route>
+        <Route path={'/'} >
+          <Test />
+        </Route>
       </Switch>
     </Grid>
   );
