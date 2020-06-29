@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Typography } from '@material-ui/core';
 import NotificationsIcon from '@material-ui/icons/Notifications';
@@ -13,7 +13,11 @@ const useStyles = makeStyles((theme) => ({
 
 const TopNavBar: React.FC = () => {
   const classes = useStyles();
-  const [pageTitle, setPageTitle] = useState('Announcements');
+  const [pageTitle, setPageTitle] = useState('');
+
+  useEffect(() => {
+    setPageTitle(window.location.pathname);
+  }, []);
 
   return (
     <Grid container item spacing={0} className={classes.topNav}>

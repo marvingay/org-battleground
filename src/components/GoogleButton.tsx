@@ -6,26 +6,24 @@ import {
   GoogleLoginResponseOffline,
 } from 'react-google-login';
 import { CLIENT_ID } from '../services/config';
-
-interface GoogleUserObject {
-  googleId: string;
-  tokenId: string;
-  accessToken: string;
-  tokenObj: object;
-  profileObj: object;
-}
+import axios from 'axios';
 
 const GoogleButton: React.FC = () => {
   const [authenticated, setAuthenticated] = useState(false);
   const [authToken, setAuthToken] = useState('');
 
-  const login = (
+  const onLogin = async (
     response: GoogleLoginResponse | GoogleLoginResponseOffline
   ) => {
     response = response as GoogleLoginResponse;
-    if (response.accessToken) {
+    if (response.tokenId) {
+      axios.post('http://localhost:8000/auth', `idToken=${response.tokenId}`, {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      })
       setAuthenticated(true);
-      setAuthToken(response.accessToken);
+      setAuthToken(response.tokenId);
     }
   };
 
@@ -35,7 +33,7 @@ const GoogleButton: React.FC = () => {
     alert('Login failed!');
   };
 
-  const logout = () => {
+  const logout = (): void => {
     setAuthenticated(false);
     setAuthToken('');
   };
@@ -54,14 +52,12 @@ const GoogleButton: React.FC = () => {
           onFailure={handleLogoutFailure}
         />
       ) : (
-        <GoogleLogin
-          clientId={CLIENT_ID}
-          onSuccess={login}
-          onFailure={handleLoginFailure}
-          cookiePolicy={'single_host_orign'}
-          responseType='code,token'
-        />
-      )}
+          <GoogleLogin
+            clientId={CLIENT_ID}
+            onSuccess={onLogin}
+            onFailure={handleLoginFailure}
+          />
+        )}
     </div>
   );
 };

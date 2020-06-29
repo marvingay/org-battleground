@@ -6,10 +6,12 @@ import {
   Grid,
   Hidden,
   List,
+  ListItem,
   Typography,
 } from '@material-ui/core';
 import NavItem from './NavItem';
 import DateTime from './DateTime';
+import GoogleButton from './GoogleButton';
 import { navItem } from '../navigation';
 
 const useStyles = makeStyles((theme) => ({
@@ -34,20 +36,24 @@ const Sidebar = () => {
           <Container className={classes.logo}>
             <Typography variant='h4' gutterBottom>
               ORG BG
-              </Typography>
+            </Typography>
           </Container>
 
           <Container className={classes.user}>
             <Typography variant='h5' display='block' gutterBottom>
               Username
-              </Typography>
+            </Typography>
           </Container>
 
           <List className={classes.sideBar}>
             {navItem.map((item, idx) => (
               <NavItem key={`id${idx}`} text={item.text} icon={item.icon} />
             ))}
+
           </List>
+          <Container>
+            <GoogleButton />
+          </Container>
           <Container id='DateTime'>
             <DateTime />
           </Container>
