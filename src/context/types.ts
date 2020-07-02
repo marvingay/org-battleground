@@ -25,7 +25,11 @@ type ActionMap<M extends { [index: string]: any }> = {
 
 export enum Types {
   ShowDisplayForm = 'SET_DISPLAY_FORM',
-  RemoveDisplayForm = 'REMOVE_DISPLAY_FORM'
+  RemoveDisplayForm = 'REMOVE_DISPLAY_FORM',
+  SetAuthenticated = 'SET_AUTHENTICATED',
+  RemoveAuthenticated = 'REMOVE_AUTHENTICATED',
+  SetAuthToken = 'SET_AUTH_TOKEN',
+  RemoveAuthToken = 'REMOVE_AUTH_TOKEN'
 }
 
 type Payload = {

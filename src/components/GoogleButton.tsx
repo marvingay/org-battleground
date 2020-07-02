@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+import { GlobalContext } from '../context/GlobalState';
+import { Types } from '../context/types';
 import {
   GoogleLogin,
   GoogleLogout,
@@ -9,8 +11,7 @@ import { CLIENT_ID } from '../services/config';
 import axios from 'axios';
 
 const GoogleButton: React.FC = () => {
-  const [authenticated, setAuthenticated] = useState(false);
-  const [authToken, setAuthToken] = useState('');
+  const { state, dispatch } = useContext(GlobalContext);
 
   const onLogin = async (
     response: GoogleLoginResponse | GoogleLoginResponseOffline
@@ -27,14 +28,18 @@ const GoogleButton: React.FC = () => {
             },
           }
         );
+        dispatch({
+          type: Types.SetAuthenticated,
+        });
+        dispatch({
+          type: Types.SetAuthToken,
+          payload: `${authResponse.data.webToken}`,
+        });
 
         if (authResponse.status === 201) {
           // TODO: pop up modal
           console.log('work in progress');
         }
-
-        setAuthenticated(true);
-        setAuthToken(response.tokenId);
       } catch (error) {
         console.log(error);
       }
@@ -48,8 +53,13 @@ const GoogleButton: React.FC = () => {
   };
 
   const logout = (): void => {
-    setAuthenticated(false);
-    setAuthToken('');
+    dispatch({
+      type: Types.RemoveAuthenticated,
+    });
+    dispatch({
+      type: Types.RemoveAuthToken,
+    });
+    // TODO: Remove Token from local Storage if necessary
   };
 
   const handleLogoutFailure = (): void => {
@@ -58,7 +68,7 @@ const GoogleButton: React.FC = () => {
 
   return (
     <div>
-      {authenticated ? (
+      {state.authenticated ? (
         <GoogleLogout
           clientId={CLIENT_ID}
           buttonText='Logout'
