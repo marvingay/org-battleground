@@ -17,13 +17,27 @@ const GoogleButton: React.FC = () => {
   ) => {
     response = response as GoogleLoginResponse;
     if (response.tokenId) {
-      axios.post('http://localhost:8000/auth', `idToken=${response.tokenId}`, {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
+      try {
+        const authResponse = await axios.post(
+          'http://localhost:8000/auth',
+          `idToken=${response.tokenId}`,
+          {
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+          }
+        );
+
+        if (authResponse.status === 201) {
+          // TODO: pop up modal
+          console.log('work in progress');
         }
-      })
-      setAuthenticated(true);
-      setAuthToken(response.tokenId);
+
+        setAuthenticated(true);
+        setAuthToken(response.tokenId);
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
@@ -52,12 +66,12 @@ const GoogleButton: React.FC = () => {
           onFailure={handleLogoutFailure}
         />
       ) : (
-          <GoogleLogin
-            clientId={CLIENT_ID}
-            onSuccess={onLogin}
-            onFailure={handleLoginFailure}
-          />
-        )}
+        <GoogleLogin
+          clientId={CLIENT_ID}
+          onSuccess={onLogin}
+          onFailure={handleLoginFailure}
+        />
+      )}
     </div>
   );
 };
