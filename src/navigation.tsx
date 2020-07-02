@@ -4,7 +4,6 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import GamesIcon from '@material-ui/icons/Games';
 import MessageIcon from '@material-ui/icons/Message';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import PeopleIcon from '@material-ui/icons/People';
 import AnnouncementIcon from '@material-ui/icons/Announcement';
 import HelpIcon from '@material-ui/icons/Help';
 
@@ -24,10 +23,6 @@ export const navItem: Navigation[] = [
   {
     text: 'Games',
     icon: <GamesIcon />,
-  },
-  {
-    text: 'Friends',
-    icon: <PeopleIcon />,
   },
   {
     text: 'Messages',
