@@ -23,6 +23,7 @@
     "react-scripts": "3.4.1",
     "typescript": "^3.7.5"
   },
+  "proxy": "http://localhost:8000",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -42,7 +43,6 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
-    ],
-    "proxy": "http://localhost:8000"
+    ]
   }
 }

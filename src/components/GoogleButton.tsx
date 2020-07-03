@@ -19,8 +19,8 @@ const GoogleButton: React.FC = () => {
     response = response as GoogleLoginResponse;
     if (response.tokenId) {
       try {
-        const authResponse = await axios.post(
-          'http://localhost:8000/auth',
+        const { data, status } = await axios.post(
+          '/auth',
           `idToken=${response.tokenId}`,
           {
             headers: {
@@ -33,10 +33,10 @@ const GoogleButton: React.FC = () => {
         });
         dispatch({
           type: Types.SetAuthToken,
-          payload: `${authResponse.data.webToken}`,
+          payload: { authToken: `${data.webToken}` },
         });
 
-        if (authResponse.status === 201) {
+        if (status === 201) {
           // TODO: pop up modal
           console.log('work in progress');
         }

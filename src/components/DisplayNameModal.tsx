@@ -14,7 +14,6 @@ const DisplayNameModal: React.FC = () => {
 
   const handleClose = async () => {
     // TODO: Add PUT request to set new user username
-    // TODO: Handle JWT storage.
     dispatch({
       type: Types.RemoveDisplayForm,
     });

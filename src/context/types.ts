@@ -8,19 +8,19 @@ export interface InitialStateType {
   authenticated: boolean;
   authToken: string;
   showDisplayForm: boolean;
-};
+}
 
 // Reducer Types
 
 type ActionMap<M extends { [index: string]: any }> = {
   [Key in keyof M]: M[Key] extends undefined
-  ? {
-    type: Key;
-   }
-   : {
-     type: Key;
-     payload: M[Key];
-   }
+    ? {
+        type: Key;
+      }
+    : {
+        type: Key;
+        payload: M[Key];
+      };
 };
 
 export enum Types {
@@ -29,17 +29,28 @@ export enum Types {
   SetAuthenticated = 'SET_AUTHENTICATED',
   RemoveAuthenticated = 'REMOVE_AUTHENTICATED',
   SetAuthToken = 'SET_AUTH_TOKEN',
-  RemoveAuthToken = 'REMOVE_AUTH_TOKEN'
+  RemoveAuthToken = 'REMOVE_AUTH_TOKEN',
 }
 
 type Payload = {
-  [Types.ShowDisplayForm] : {
+  [Types.ShowDisplayForm]: {
     showDisplayForm: boolean;
   };
-  [Types.RemoveDisplayForm] : {
+  [Types.RemoveDisplayForm]: {
     showDisplayForm: boolean;
-  }
-}
+  };
+  [Types.SetAuthenticated]: {
+    authenticated: boolean;
+  };
+  [Types.RemoveAuthenticated]: {
+    authenticated: boolean;
+  };
+  [Types.SetAuthToken]: {
+    authToken: string;
+  };
+  [Types.RemoveAuthToken]: {
+    authToken: string;
+  };
+};
 
 export type GlobalActions = ActionMap<Payload>[keyof ActionMap<Payload>];
-

@@ -5,14 +5,34 @@ export default (state: InitialStateType, action: GlobalActions) => {
     case Types.ShowDisplayForm:
       return {
         ...state,
-        ...action.payload 
-      }
+        ...action.payload,
+      };
     case Types.RemoveDisplayForm:
       return {
         ...state,
-        ...action.payload
-      }
+        ...action.payload,
+      };
+    case Types.SetAuthenticated:
+      return {
+        ...state,
+        authenticated: true,
+      };
+    case Types.RemoveAuthenticated:
+      return {
+        ...state,
+        authenticated: false,
+      };
+    case Types.SetAuthToken:
+      return {
+        ...state,
+        ...action.payload,
+      };
+    case Types.RemoveAuthToken:
+      return {
+        ...state,
+        ...action.payload,
+      };
     default:
       return state;
-  } 
+  }
 };

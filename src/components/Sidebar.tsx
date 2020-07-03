@@ -6,7 +6,6 @@ import {
   Grid,
   Hidden,
   List,
-  ListItem,
   Typography,
 } from '@material-ui/core';
 import NavItem from './NavItem';
@@ -47,9 +46,12 @@ const Sidebar = () => {
 
           <List className={classes.sideBar}>
             {navItem.map((item, idx) => (
-              <NavItem key={`id${idx}`} text={item.text} icon={item.icon} />
+              <NavItem
+                key={`${Math.floor(Math.random() * 1000000 * idx)}`}
+                text={item.text}
+                icon={item.icon}
+              />
             ))}
-
           </List>
           <Container>
             <GoogleButton />
