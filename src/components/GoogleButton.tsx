@@ -42,7 +42,6 @@ const GoogleButton: React.FC = () => {
         });
 
         if (status === 201) {
-          // TODO: pop up modal
           dispatch({
             type: Types.ShowDisplayForm,
             payload: { showDisplayForm: true },
@@ -61,17 +60,21 @@ const GoogleButton: React.FC = () => {
     alert('Login failed!');
   };
 
-  const logout = (): void => {
-    document.cookie = 'webToken= ; expires = Thu, 01 Jan 1970 00:00:00 GMT';
-    dispatch({
-      type: Types.RemoveAuthenticated,
-    });
-    dispatch({
-      type: Types.RemoveAuthToken,
-    });
-    dispatch({
-      type: Types.RemoveUser,
-    });
+  const logout = async () => {
+    try {
+      await axios.get('/auth/logout');
+      dispatch({
+        type: Types.RemoveAuthenticated,
+      });
+      dispatch({
+        type: Types.RemoveAuthToken,
+      });
+      dispatch({
+        type: Types.RemoveUser,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleLogoutFailure = (): void => {
@@ -92,6 +95,7 @@ const GoogleButton: React.FC = () => {
           clientId={CLIENT_ID}
           onSuccess={onLogin}
           onFailure={handleLoginFailure}
+          isSignedIn={true}
         />
       )}
     </div>

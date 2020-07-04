@@ -19,7 +19,6 @@ const DisplayNameModal: React.FC = () => {
   };
 
   const handleClose = async (event: any) => {
-    // TODO: Add PUT request to set new user username
     event.preventDefault();
     try {
       await axios.put('/auth', {
