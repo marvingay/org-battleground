@@ -1,6 +1,7 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { GlobalContext } from '../context/GlobalState';
 import { Types } from '../context/types';
+import axios from 'axios';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -11,12 +12,30 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 
 const DisplayNameModal: React.FC = () => {
   const { state, dispatch } = useContext(GlobalContext);
+  const [displayName, setDisplayName] = useState('');
 
-  const handleClose = async () => {
+  const handleChange = (event: any) => {
+    setDisplayName(event.target.value);
+  };
+
+  const handleClose = async (event: any) => {
     // TODO: Add PUT request to set new user username
-    dispatch({
-      type: Types.RemoveDisplayForm,
-    });
+    event.preventDefault();
+    try {
+      await axios.put('/auth', {
+        currentName: state.user,
+        updatedName: displayName,
+      });
+      dispatch({
+        type: Types.RemoveDisplayForm,
+      });
+      dispatch({
+        type: Types.SetUser,
+        payload: { user: displayName },
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -33,6 +52,7 @@ const DisplayNameModal: React.FC = () => {
         </DialogContentText>
         <TextField
           autoFocus
+          onChange={handleChange}
           margin='dense'
           label='Display Name'
           type='text'

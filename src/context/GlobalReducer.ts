@@ -10,7 +10,7 @@ export default (state: InitialStateType, action: GlobalActions) => {
     case Types.RemoveDisplayForm:
       return {
         ...state,
-        ...action.payload,
+        showDisplayForm: false,
       };
     case Types.SetAuthenticated:
       return {
@@ -30,7 +30,17 @@ export default (state: InitialStateType, action: GlobalActions) => {
     case Types.RemoveAuthToken:
       return {
         ...state,
+        authToken: '',
+      };
+    case Types.SetUser:
+      return {
+        ...state,
         ...action.payload,
+      };
+    case Types.RemoveUser:
+      return {
+        ...state,
+        user: '',
       };
     default:
       return state;

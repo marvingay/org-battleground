@@ -1,35 +1,19 @@
-import React, { useContext, useEffect } from 'react';
-import { Types } from '../context/types';
+import React, { useContext } from 'react';
 import { GlobalContext } from '../context/GlobalState';
-import axios from 'axios';
 import { Grid } from '@material-ui/core';
 import { Switch, Route } from 'react-router-dom';
 import Announcements from './Announcements';
 import TopNavBar from './TopNavBar';
+import DisplayNameModal from './DisplayNameModal';
 import Test from './Test';
 
 const Home: React.FC = () => {
-  const { dispatch } = useContext(GlobalContext);
-
-  useEffect(() => {
-    const checkAuth = async () => {
-      try {
-        const { status } = await axios.get('/auth');
-        if (status === 200) {
-          dispatch({ type: Types.SetAuthenticated });
-          return;
-        } else return;
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    checkAuth();
-  }, [dispatch]);
+  const { state } = useContext(GlobalContext);
 
   return (
     <Grid container item xs={12} md={9}>
       <TopNavBar />
+      {state.showDisplayForm && <DisplayNameModal />}
       <Switch>
         <Route exact path={'/announcements'}>
           <Announcements />

@@ -19,6 +19,7 @@ const GoogleButton: React.FC = () => {
     response = response as GoogleLoginResponse;
     if (response.tokenId) {
       try {
+        // Send OAuth Token to Backend for verification
         const { data, status } = await axios.post(
           '/auth',
           `idToken=${response.tokenId}`,
@@ -35,9 +36,17 @@ const GoogleButton: React.FC = () => {
           type: Types.SetAuthToken,
           payload: { authToken: `${data.webToken}` },
         });
+        dispatch({
+          type: Types.SetUser,
+          payload: { user: `${data.displayName}` },
+        });
 
         if (status === 201) {
           // TODO: pop up modal
+          dispatch({
+            type: Types.ShowDisplayForm,
+            payload: { showDisplayForm: true },
+          });
           console.log('work in progress');
         }
       } catch (error) {
@@ -53,13 +62,16 @@ const GoogleButton: React.FC = () => {
   };
 
   const logout = (): void => {
+    document.cookie = 'webToken= ; expires = Thu, 01 Jan 1970 00:00:00 GMT';
     dispatch({
       type: Types.RemoveAuthenticated,
     });
     dispatch({
       type: Types.RemoveAuthToken,
     });
-    // TODO: Remove Token from local Storage if necessary
+    dispatch({
+      type: Types.RemoveUser,
+    });
   };
 
   const handleLogoutFailure = (): void => {

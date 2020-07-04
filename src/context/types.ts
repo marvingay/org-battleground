@@ -8,6 +8,7 @@ export interface InitialStateType {
   authenticated: boolean;
   authToken: string;
   showDisplayForm: boolean;
+  user: string;
 }
 
 // Reducer Types
@@ -30,6 +31,8 @@ export enum Types {
   RemoveAuthenticated = 'REMOVE_AUTHENTICATED',
   SetAuthToken = 'SET_AUTH_TOKEN',
   RemoveAuthToken = 'REMOVE_AUTH_TOKEN',
+  SetUser = 'SET_USER',
+  RemoveUser = 'REMOVE_USER',
 }
 
 type Payload = {
@@ -50,6 +53,12 @@ type Payload = {
   };
   [Types.RemoveAuthToken]: {
     authToken: string;
+  };
+  [Types.SetUser]: {
+    user: string;
+  };
+  [Types.RemoveUser]: {
+    user: string;
   };
 };
 
