@@ -8,6 +8,7 @@ import {
 } from 'react-google-login';
 import { CLIENT_ID } from '../services/config';
 import axios from 'axios';
+import { Types } from '../types';
 
 const GoogleButton: React.FC = () => {
   const { state, dispatch } = useContext(GlobalContext);

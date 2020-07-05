@@ -1,10 +1,10 @@
 // Context, Initial State types
 
- type Props = {
+export type Props = {
   children: React.ReactNode;
 };
 
- interface InitialStateType {
+export interface InitialStateType {
   authenticated: boolean;
   authToken: string;
   showDisplayForm: boolean;
@@ -13,7 +13,7 @@
 
 // Reducer Types
 
-type ActionMap<M extends { [index: string]: any }> = {
+export type ActionMap<M extends { [index: string]: any }> = {
   [Key in keyof M]: M[Key] extends undefined
     ? {
         type: Key;
@@ -24,7 +24,7 @@ type ActionMap<M extends { [index: string]: any }> = {
       };
 };
 
- enum Types {
+export enum Types {
   ShowDisplayForm = 'SET_DISPLAY_FORM',
   RemoveDisplayForm = 'REMOVE_DISPLAY_FORM',
   SetAuthenticated = 'SET_AUTHENTICATED',
@@ -33,7 +33,7 @@ type ActionMap<M extends { [index: string]: any }> = {
   RemoveUser = 'REMOVE_USER',
 }
 
-type Payload = {
+export type Payload = {
   [Types.ShowDisplayForm]: {
     showDisplayForm: boolean;
   };
@@ -54,4 +54,4 @@ type Payload = {
   };
 };
 
- type GlobalActions = ActionMap<Payload>[keyof ActionMap<Payload>];
+export type GlobalActions = ActionMap<Payload>[keyof ActionMap<Payload>];

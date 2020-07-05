@@ -8,6 +8,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import { Types } from '../types';
 
 const DisplayNameModal: React.FC = () => {
   const { state, dispatch } = useContext(GlobalContext);
@@ -42,7 +43,7 @@ const DisplayNameModal: React.FC = () => {
       onClose={handleClose}
       aria-labelledby='display-name'
     >
-      <DialogTitle id='display-name'>Choose Display Name</DialogTitle>
+      <DialogTitle id='display-name'>Choose a Display Name</DialogTitle>
       <DialogContent>
         <DialogContentText>
           Choose a unique display name for your account. If you don't choose one
