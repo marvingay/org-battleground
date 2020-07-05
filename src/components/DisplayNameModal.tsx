@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react';
 import { GlobalContext } from '../context/GlobalState';
-import { Types } from '../context/types';
 import axios from 'axios';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';

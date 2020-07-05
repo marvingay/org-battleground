@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { GlobalContext } from '../context/GlobalState';
-import { Types } from '../context/types';
 import {
   GoogleLogin,
   GoogleLogout,

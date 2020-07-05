@@ -1,4 +1,3 @@
-import { GlobalActions, InitialStateType, Types } from './types';
 
 export default (state: InitialStateType, action: GlobalActions) => {
   switch (action.type) {
