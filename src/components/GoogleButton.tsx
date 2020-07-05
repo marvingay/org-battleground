@@ -32,10 +32,6 @@ const GoogleButton: React.FC = () => {
           type: Types.SetAuthenticated,
         });
         dispatch({
-          type: Types.SetAuthToken,
-          payload: { authToken: `${data.webToken}` },
-        });
-        dispatch({
           type: Types.SetUser,
           payload: { user: `${data.displayName}` },
         });
@@ -64,9 +60,6 @@ const GoogleButton: React.FC = () => {
       await axios.get('/auth/logout');
       dispatch({
         type: Types.RemoveAuthenticated,
-      });
-      dispatch({
-        type: Types.RemoveAuthToken,
       });
       dispatch({
         type: Types.RemoveUser,

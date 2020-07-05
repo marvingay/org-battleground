@@ -21,16 +21,6 @@ export default (state: InitialStateType, action: GlobalActions) => {
         ...state,
         authenticated: false,
       };
-    case Types.SetAuthToken:
-      return {
-        ...state,
-        ...action.payload,
-      };
-    case Types.RemoveAuthToken:
-      return {
-        ...state,
-        authToken: '',
-      };
     case Types.SetUser:
       return {
         ...state,

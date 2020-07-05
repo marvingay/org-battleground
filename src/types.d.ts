@@ -29,8 +29,6 @@ type ActionMap<M extends { [index: string]: any }> = {
   RemoveDisplayForm = 'REMOVE_DISPLAY_FORM',
   SetAuthenticated = 'SET_AUTHENTICATED',
   RemoveAuthenticated = 'REMOVE_AUTHENTICATED',
-  SetAuthToken = 'SET_AUTH_TOKEN',
-  RemoveAuthToken = 'REMOVE_AUTH_TOKEN',
   SetUser = 'SET_USER',
   RemoveUser = 'REMOVE_USER',
 }
@@ -47,12 +45,6 @@ type Payload = {
   };
   [Types.RemoveAuthenticated]: {
     authenticated: boolean;
-  };
-  [Types.SetAuthToken]: {
-    authToken: string;
-  };
-  [Types.RemoveAuthToken]: {
-    authToken: string;
   };
   [Types.SetUser]: {
     user: string;
