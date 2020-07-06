@@ -8,6 +8,7 @@ import {
   List,
   Typography,
 } from '@material-ui/core';
+import Logo from './Logo';
 import NavItem from './NavItem';
 import DateTime from './DateTime';
 import GoogleButton from './GoogleButton';
@@ -17,6 +18,13 @@ const useStyles = makeStyles((theme) => ({
   logo: {
     marginTop: theme.spacing(3),
     marginLeft: theme.spacing(0),
+  },
+  drawer: {
+    width: 240,
+  },
+  drawerPaper: {
+    width: 240,
+    overflowX: 'hidden',
   },
   user: {
     padding: theme.spacing(2),
@@ -28,16 +36,17 @@ const useStyles = makeStyles((theme) => ({
 
 const Sidebar = () => {
   const classes = useStyles();
+
   return (
     <Hidden smDown>
       <Grid item md={3}>
-        <Drawer open variant='permanent'>
-          <Container className={classes.logo}>
-            <Typography variant='h4' gutterBottom>
-              ORG BG
-            </Typography>
-          </Container>
-
+        <Drawer
+          className={classes.drawer}
+          classes={{ paper: classes.drawerPaper }}
+          variant='permanent'
+          open
+        >
+          <Logo />
           <Container className={classes.user}>
             <Typography variant='h5' display='block' gutterBottom>
               Username
@@ -53,9 +62,7 @@ const Sidebar = () => {
               />
             ))}
           </List>
-          <Container>
-            <GoogleButton />
-          </Container>
+          <GoogleButton />
           <Container id='DateTime'>
             <DateTime />
           </Container>

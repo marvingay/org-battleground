@@ -8,6 +8,13 @@ body {
   padding: 0;
   overflow-x: hidden;
 }
+
+@media (min-width: 960px) {
+  .Home {
+    margin-left: 240px;
+  }
+}
+
 #DateTime {
   position: absolute;
   bottom: 10px;

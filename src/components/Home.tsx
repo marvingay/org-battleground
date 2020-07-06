@@ -11,7 +11,7 @@ const Home: React.FC = () => {
   const { state } = useContext(GlobalContext);
 
   return (
-    <Grid container item xs={12} md={9}>
+    <Grid className='Home' container>
       <TopNavBar />
       {state.showDisplayForm && <DisplayNameModal />}
       <Switch>

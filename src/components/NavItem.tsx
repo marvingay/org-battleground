@@ -1,11 +1,6 @@
 import React from 'react';
-import {
-  Button,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-} from '@material-ui/core';
-import { NavLink as RouterLink } from 'react-router-dom';
+import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+import { NavLink } from 'react-router-dom';
 
 const NavItem: React.FC<{ text: string; icon: JSX.Element }> = ({
   text,
@@ -16,14 +11,12 @@ const NavItem: React.FC<{ text: string; icon: JSX.Element }> = ({
     return txt.toLowerCase();
   };
   return (
-    <RouterLink to={linkName(text)}>
-      <ListItem>
-        <Button fullWidth>
-          <ListItemIcon>{icon}</ListItemIcon>
-          <ListItemText>{text}</ListItemText>
-        </Button>
+    <NavLink to={linkName(text)}>
+      <ListItem button>
+        <ListItemIcon>{icon}</ListItemIcon>
+        <ListItemText>{text}</ListItemText>
       </ListItem>
-    </RouterLink>
+    </NavLink>
   );
 };
 
