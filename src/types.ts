@@ -4,11 +4,15 @@ export type Props = {
   children: React.ReactNode;
 };
 
+interface MetaInfo {
+  title: string;
+}
 export interface InitialStateType {
   authenticated: boolean;
   authToken: string;
   showDisplayForm: boolean;
   user: string;
+  meta: MetaInfo; 
 }
 
 // Reducer Types
@@ -55,3 +59,15 @@ export type Payload = {
 };
 
 export type GlobalActions = ActionMap<Payload>[keyof ActionMap<Payload>];
+
+// Announcement Types
+
+export interface Announcement {
+  id: number;
+  title: string;
+  content: string;
+  author: string;
+  date: Date;
+  category: string;
+  hidden: boolean;
+}

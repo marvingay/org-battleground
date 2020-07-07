@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
-import { announcements, Announcement } from '../data/announcements';
+import React, { useState, useEffect } from 'react';
+import { Announcement } from '../types';
+import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+
+// TODO: Implement date formatting to local time. (For broader use)
+// TODO: Stucture and Style announcement paper
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -11,20 +15,25 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Announcements: React.FC = () => {
-  const [news, setNews] = useState<Announcement[]>([...announcements]);
+  const [announcements, setAnnouncements] = useState<Announcement[]>([]);
   const classes = useStyles();
+  const getAnnouncements = async () => {
+    const { data } = await axios.get('/api/announcements');
+    setAnnouncements(data);
+  };
+
+  useEffect(() => {
+    getAnnouncements();
+  }, []);
   return (
     <Grid item container spacing={5}>
-      <Grid item xs={12} />
-      {news.map((item, idx) => (
-        <Grid key={`${idx}`} item xs={9} md={7}>
-          <Paper elevation={5} className={classes.paper}>
-            {item.title}
-            {item.author}
-            {item.body}
-            {item.date}
-          </Paper>
-        </Grid>
+      {announcements.map((item) => (
+        <Paper>
+          {item.title}
+          {item.author}
+          {item.content}
+          {item.date.toLocaleString()} {item.category}
+        </Paper>
       ))}
     </Grid>
   );

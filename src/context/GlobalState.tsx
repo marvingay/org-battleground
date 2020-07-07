@@ -8,6 +8,7 @@ const initialState: InitialStateType = {
   authToken: '',
   showDisplayForm: false,
   user: '',
+  meta: { title: '' },
 };
 
 // create context
