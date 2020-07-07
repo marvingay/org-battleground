@@ -1,24 +1,14 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {
-  Container,
-  Drawer,
-  Grid,
-  Hidden,
-  List,
-  Typography,
-} from '@material-ui/core';
+import { Drawer, Grid, Hidden, List } from '@material-ui/core';
 import Logo from './Logo';
+import UserNav from './UserNav';
 import NavItem from './NavItem';
 import DateTime from './DateTime';
 import GoogleButton from './GoogleButton';
 import { navItem } from '../navigation';
 
 const useStyles = makeStyles((theme) => ({
-  logo: {
-    marginTop: theme.spacing(3),
-    marginLeft: theme.spacing(0),
-  },
   drawer: {
     width: 240,
   },
@@ -26,11 +16,10 @@ const useStyles = makeStyles((theme) => ({
     width: 240,
     overflowX: 'hidden',
   },
-  user: {
-    padding: theme.spacing(2),
-  },
-  sideBar: {
-    padding: theme.spacing(2),
+  bottom: {
+    position: 'absolute',
+    bottom: '10px',
+    margin: '0 auto',
   },
 }));
 
@@ -47,13 +36,8 @@ const Sidebar = () => {
           open
         >
           <Logo />
-          <Container className={classes.user}>
-            <Typography variant='h5' display='block' gutterBottom>
-              Username
-            </Typography>
-          </Container>
-
-          <List className={classes.sideBar}>
+          <UserNav />
+          <List>
             {navItem.map((item, idx) => (
               <NavItem
                 key={`${Math.floor(Math.random() * 1000000 * idx)}`}
@@ -63,9 +47,7 @@ const Sidebar = () => {
             ))}
           </List>
           <GoogleButton />
-          <Container id='DateTime'>
-            <DateTime />
-          </Container>
+          <DateTime />
         </Drawer>
       </Grid>
     </Hidden>

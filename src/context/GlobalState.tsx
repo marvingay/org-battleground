@@ -1,5 +1,6 @@
 import React, { createContext, useReducer } from 'react';
 import GlobalReducer from './GlobalReducer';
+import { InitialStateType, Props } from '../types';
 
 // initial state
 const initialState: InitialStateType = {

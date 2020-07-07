@@ -9,9 +9,28 @@ import {
 import { CLIENT_ID } from '../services/config';
 import axios from 'axios';
 import { Types } from '../types';
+import { makeStyles } from '@material-ui/core/styles';
+
+const width = '120px';
+const margin = '60px auto 10px auto';
+const height = '45px';
+const useStyles = makeStyles((theme) => ({
+  container: {
+    margin,
+  },
+  logout: {
+    height,
+    width,
+  },
+  login: {
+    height,
+    width,
+  },
+}));
 
 const GoogleButton: React.FC = () => {
   const { state, dispatch } = useContext(GlobalContext);
+  const classes = useStyles();
 
   const onLogin = async (
     response: GoogleLoginResponse | GoogleLoginResponseOffline
@@ -75,9 +94,10 @@ const GoogleButton: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className={classes.container}>
       {state.authenticated ? (
         <GoogleLogout
+          className={classes.logout}
           clientId={CLIENT_ID}
           buttonText='Logout'
           onLogoutSuccess={logout}
@@ -85,10 +105,12 @@ const GoogleButton: React.FC = () => {
         />
       ) : (
         <GoogleLogin
+          className={classes.login}
           clientId={CLIENT_ID}
           onSuccess={onLogin}
           onFailure={handleLoginFailure}
           isSignedIn={true}
+          buttonText='Log In'
         />
       )}
     </div>

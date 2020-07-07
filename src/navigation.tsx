@@ -13,7 +13,7 @@ interface Navigation {
 }
 export const navItem: Navigation[] = [
   {
-    text: 'Dashboard',
+    text: 'Home',
     icon: <DashboardIcon />,
   },
   {

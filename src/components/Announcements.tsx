@@ -16,8 +16,8 @@ const Announcements: React.FC = () => {
   return (
     <Grid item container spacing={5}>
       <Grid item xs={12} />
-      {news.map((item) => (
-        <Grid item xs={9} md={7}>
+      {news.map((item, idx) => (
+        <Grid key={`${idx}`} item xs={9} md={7}>
           <Paper elevation={5} className={classes.paper}>
             {item.title}
             {item.author}
