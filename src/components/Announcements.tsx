@@ -18,6 +18,7 @@ const Announcements: React.FC = () => {
 
   const getAnnouncements = async () => {
     const { data } = await axios.get('/api/announcements');
+    data.sort((a: Announcement, b: Announcement) => (a.id < b.id ? 1 : -1));
     setAnnouncements(data);
   };
 
