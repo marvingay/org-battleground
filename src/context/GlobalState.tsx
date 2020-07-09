@@ -9,6 +9,7 @@ const initialState: InitialStateType = {
   showDisplayForm: false,
   user: '',
   meta: { title: '' },
+  announcements: [],
 };
 
 // create context

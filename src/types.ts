@@ -13,6 +13,7 @@ export interface InitialStateType {
   showDisplayForm: boolean;
   user: string;
   meta: MetaInfo; 
+  announcements: Announcement[];
 }
 
 // Reducer Types
@@ -35,9 +36,12 @@ export enum Types {
   RemoveAuthenticated = 'REMOVE_AUTHENTICATED',
   SetUser = 'SET_USER',
   RemoveUser = 'REMOVE_USER',
+  SetPageTitle = 'SET_PAGE_TITLE',
+  SetAnnouncements = 'SET_ANNOUNCEMENTS',
 }
 
 export type Payload = {
+  // Authentication 
   [Types.ShowDisplayForm]: {
     showDisplayForm: boolean;
   };
@@ -56,6 +60,14 @@ export type Payload = {
   [Types.RemoveUser]: {
     user: string;
   };
+  // Meta
+  [Types.SetPageTitle]: {
+    meta: MetaInfo;
+  }
+  // announcements
+  [Types.SetAnnouncements]: {
+    announcements: Announcement[];
+  }
 };
 
 export type GlobalActions = ActionMap<Payload>[keyof ActionMap<Payload>];

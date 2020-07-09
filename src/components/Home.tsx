@@ -1,29 +1,20 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { GlobalContext } from '../context/GlobalState';
-import { Grid } from '@material-ui/core';
-import { Switch, Route } from 'react-router-dom';
-import Announcements from './Announcements';
-import TopNavBar from './TopNavBar';
-import DisplayNameModal from './DisplayNameModal';
-import Test from './Test';
+import { Types } from '../types';
 
 const Home: React.FC = () => {
-  const { state } = useContext(GlobalContext);
+  const { state, dispatch } = useContext(GlobalContext);
 
-  return (
-    <Grid className='Home' container>
-      <TopNavBar />
-      {state.showDisplayForm && <DisplayNameModal />}
-      <Switch>
-        <Route exact path={'/announcements'}>
-          <Announcements />
-        </Route>
-        <Route path={'/'}>
-          <Test />
-        </Route>
-      </Switch>
-    </Grid>
-  );
+  useEffect(() => {
+    dispatch({
+      type: Types.SetPageTitle,
+      payload: {
+        ...state,
+        meta: { ...state.meta, title: 'Home' },
+      },
+    }); // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  return <div>Work in progress</div>;
 };
 
 export default Home;

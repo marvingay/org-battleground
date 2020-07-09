@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { Announcement } from '../types';
+import React, { useEffect, useContext } from 'react';
+import { GlobalContext } from '../context/GlobalState';
+import { Announcement, Types } from '../types';
 import axios from 'axios';
 import AnnouncementItem from './AnnouncementItem';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
-
+// TODO: Refactor Announcements to Context
 const useStyles = makeStyles({
   container: {
     marginTop: '40px',
@@ -13,23 +14,35 @@ const useStyles = makeStyles({
 });
 const Announcements: React.FC = () => {
   const classes = useStyles();
+  const { state, dispatch } = useContext(GlobalContext);
 
-  const [announcements, setAnnouncements] = useState<Announcement[]>([]);
-
-  const getAnnouncements = async () => {
+  const getAnnouncements = async (currentAnnouncements: Announcement[]) => {
     const { data } = await axios.get('/api/announcements');
     data.sort((a: Announcement, b: Announcement) => (a.id < b.id ? 1 : -1));
-    setAnnouncements(data);
+    if (data.length > currentAnnouncements.length) {
+      dispatch({
+        type: Types.SetAnnouncements,
+        payload: { announcements: data },
+      });
+    }
   };
 
   useEffect(() => {
-    getAnnouncements();
+    dispatch({
+      type: Types.SetPageTitle,
+      payload: {
+        ...state,
+        meta: { ...state.meta, title: 'Announcements' },
+      },
+    });
+    getAnnouncements(state.announcements);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <Container className={classes.container}>
       <Grid item container spacing={5}>
-        {announcements.map((item) => (
-          <AnnouncementItem announcement={item} />
+        {state.announcements.map((item) => (
+          <AnnouncementItem key={item.id} announcement={item} />
         ))}
       </Grid>
     </Container>

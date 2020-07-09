@@ -2,6 +2,7 @@ import { GlobalActions, InitialStateType, Types } from '../types';
 
 export default (state: InitialStateType, action: GlobalActions) => {
   switch (action.type) {
+    // Authentication Dispatch
     case Types.ShowDisplayForm:
       return {
         ...state,
@@ -32,6 +33,18 @@ export default (state: InitialStateType, action: GlobalActions) => {
         ...state,
         user: '',
       };
+    // Meta Dispatch
+    case Types.SetPageTitle:
+      return {
+        ...state,
+        ...action.payload,
+      }
+    // Announcement Dispatch
+    case Types.SetAnnouncements:
+      return {
+        ...state,
+        announcements: action.payload.announcements,
+      }
     default:
       return state;
   }

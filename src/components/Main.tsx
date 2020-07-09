@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { GlobalContext } from '../context/GlobalState';
 import { Grid } from '@material-ui/core';
 import { Switch, Route } from 'react-router-dom';
+import Home from './Home';
 import Announcements from './Announcements';
 import TopNavBar from './TopNavBar';
 import DisplayNameModal from './DisplayNameModal';
@@ -15,6 +16,9 @@ const Main: React.FC = () => {
       <TopNavBar />
       {state.showDisplayForm && <DisplayNameModal />}
       <Switch>
+        <Route exact path={'/home'}>
+          <Home />
+        </Route>
         <Route exact path={'/announcements'}>
           <Announcements />
         </Route>

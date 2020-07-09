@@ -3,6 +3,8 @@ import { Grid, Paper, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Announcement } from '../types';
 
+// TODO: Fix html nesting errors
+
 const useStyles = makeStyles((theme) => ({
   paper: {
     width: '65vw',
@@ -34,8 +36,9 @@ const AnnouncementItem: React.FC<{ announcement: Announcement }> = ({
         <Grid className={classes.container} container>
           <Grid className={classes.item} item xs={12}>
             <Typography className={classes.title} variant='h2'>
-              {title} <Typography variant='subtitle1'>by {author}</Typography>
+              {title}
             </Typography>
+            <Typography variant='subtitle1'>by {author}</Typography>
           </Grid>
           <Grid className={classes.item} item xs={12}>
             <Typography className={classes.body} variant='body1'>
