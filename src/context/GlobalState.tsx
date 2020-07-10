@@ -7,7 +7,10 @@ const initialState: InitialStateType = {
   authenticated: false,
   authToken: '',
   showDisplayForm: false,
-  user: '',
+  user: {
+    name: '',
+    notifications: [],
+  },
   meta: { title: '' },
   announcements: [],
 };

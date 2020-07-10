@@ -53,7 +53,7 @@ const GoogleButton: React.FC = () => {
         });
         dispatch({
           type: Types.SetUser,
-          payload: { user: `${data.displayName}` },
+          payload: { name: `${data.displayName}` },
         });
 
         if (status === 201) {

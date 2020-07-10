@@ -26,12 +26,12 @@ export default (state: InitialStateType, action: GlobalActions) => {
     case Types.SetUser:
       return {
         ...state,
-        ...action.payload,
+        user: { ...state.user, ...action.payload } 
       };
     case Types.RemoveUser:
       return {
         ...state,
-        user: '',
+        user: { ...state.user, name: '', }
       };
     // Meta Dispatch
     case Types.SetPageTitle:

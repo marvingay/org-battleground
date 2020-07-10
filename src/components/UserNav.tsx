@@ -26,7 +26,7 @@ const UserNav: React.FC = () => {
           display='block'
           gutterBottom
         >
-          {state.user ? state.user : `Welcome!`}
+          {state.user.name ? state.user.name : `Welcome!`}
         </Typography>
       </Container>
       <Divider />

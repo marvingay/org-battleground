@@ -11,7 +11,7 @@ export interface InitialStateType {
   authenticated: boolean;
   authToken: string;
   showDisplayForm: boolean;
-  user: string;
+  user: User;
   meta: MetaInfo; 
   announcements: Announcement[];
 }
@@ -55,10 +55,10 @@ export type Payload = {
     authenticated: boolean;
   };
   [Types.SetUser]: {
-    user: string;
+    user: User;
   };
   [Types.RemoveUser]: {
-    user: string;
+    user: User;
   };
   // Meta
   [Types.SetPageTitle]: {
@@ -82,4 +82,18 @@ export interface Announcement {
   date: string;
   category: string;
   hidden: boolean;
+}
+
+export interface Notification {
+  id: string;
+  type: string;
+  message: string;
+  read: boolean;
+}
+
+// user types
+// * This will be expanded later as necessary
+export interface User {
+  name: string;
+  notifications: Notification[];
 }

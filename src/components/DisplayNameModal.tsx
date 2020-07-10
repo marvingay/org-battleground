@@ -22,7 +22,7 @@ const DisplayNameModal: React.FC = () => {
     event.preventDefault();
     try {
       await axios.put('/auth', {
-        currentName: state.user,
+        currentName: state.user.name,
         updatedName: displayName,
       });
       dispatch({
@@ -30,7 +30,7 @@ const DisplayNameModal: React.FC = () => {
       });
       dispatch({
         type: Types.SetUser,
-        payload: { user: displayName },
+        payload: { name: displayName },
       });
     } catch (error) {
       console.log(error);
