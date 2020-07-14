@@ -55,6 +55,7 @@ const DisplayNameModal: React.FC = () => {
           margin='dense'
           label='Display Name'
           type='text'
+          required
           fullWidth
         />
       </DialogContent>

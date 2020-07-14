@@ -7,6 +7,7 @@ const initialState: InitialStateType = {
   authenticated: false,
   authToken: '',
   showDisplayForm: false,
+  showMsgForm: false,
   user: {
     name: '',
     notifications: [],

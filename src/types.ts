@@ -11,6 +11,7 @@ export interface InitialStateType {
   authenticated: boolean;
   authToken: string;
   showDisplayForm: boolean;
+  showMsgForm: boolean;
   user: User;
   meta: MetaInfo; 
   announcements: Announcement[];
@@ -32,9 +33,12 @@ export type ActionMap<M extends { [index: string]: any }> = {
 export enum Types {
   ShowDisplayForm = 'SET_DISPLAY_FORM',
   RemoveDisplayForm = 'REMOVE_DISPLAY_FORM',
+  ShowMsgForm = 'SHOW_MSG_FORM',
+  RemoveMsgForm = 'REMOVE_MSG_FORM',
   SetAuthenticated = 'SET_AUTHENTICATED',
   RemoveAuthenticated = 'REMOVE_AUTHENTICATED',
   SetUser = 'SET_USER',
+  SetNotifications = 'SET_NOTIFICATIONS',
   RemoveUser = 'REMOVE_USER',
   SetPageTitle = 'SET_PAGE_TITLE',
   SetAnnouncements = 'SET_ANNOUNCEMENTS',
@@ -48,6 +52,12 @@ export type Payload = {
   [Types.RemoveDisplayForm]: {
     showDisplayForm: boolean;
   };
+  [Types.ShowMsgForm]: {
+    showMsgForm: boolean;
+  };
+  [Types.RemoveMsgForm]: {
+    showMsgForm: boolean;
+  }
   [Types.SetAuthenticated]: {
     authenticated: boolean;
   };
@@ -60,6 +70,9 @@ export type Payload = {
   [Types.RemoveUser]: {
     user: User;
   };
+  [Types.SetNotifications]: {
+    notifications: Notification[];
+  }
   // Meta
   [Types.SetPageTitle]: {
     meta: MetaInfo;

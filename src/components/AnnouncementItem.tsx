@@ -3,8 +3,6 @@ import { Grid, Paper, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Announcement } from '../types';
 
-// TODO: Fix html nesting errors
-
 const useStyles = makeStyles((theme) => ({
   paper: {
     width: '65vw',
