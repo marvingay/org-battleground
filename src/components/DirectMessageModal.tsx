@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { GlobalContext } from '../context/GlobalState';
-import { Types } from '../types';
+import { Types, SendMessage } from '../types';
 import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -39,6 +39,17 @@ const DirectMessageModal: React.FC = () => {
 
   const handleSend = async () => {
     // TODO: Send POST to backend;
+    try {
+      const sendMessage: SendMessage = {
+        sender: state.user.name,
+        recipient: recipient,
+        message: message,
+      };
+      await axios.post('/api/messages', sendMessage);
+      handleClose();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

@@ -7,11 +7,13 @@ const Messages: React.FC = () => {
   const { state, dispatch } = useContext(GlobalContext);
 
   useEffect(() => {
+    if (state.meta.title === 'Messages') return;
+
     dispatch({
       type: Types.SetPageTitle,
       payload: { meta: { ...state.meta, title: 'Messages' } },
     });
-  }, []);
+  }, [dispatch, state.meta]);
 
   const openMsgForm = () => {
     dispatch({

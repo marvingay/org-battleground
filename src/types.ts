@@ -97,6 +97,13 @@ export interface Announcement {
   hidden: boolean;
 }
 
+// Message Types
+export interface SendMessage {
+  sender: string;
+  recipient: string;
+  message: string;
+}
+
 export interface Notification {
   id: string;
   type: string;
