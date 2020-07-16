@@ -10,6 +10,7 @@ const initialState: InitialStateType = {
   showMsgForm: false,
   user: {
     name: '',
+    messages: [],
     notifications: [],
   },
   meta: { title: '' },

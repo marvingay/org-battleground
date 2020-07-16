@@ -13,7 +13,7 @@ export interface InitialStateType {
   showDisplayForm: boolean;
   showMsgForm: boolean;
   user: User;
-  meta: MetaInfo; 
+  meta: MetaInfo;
   announcements: Announcement[];
 }
 
@@ -38,6 +38,7 @@ export enum Types {
   SetAuthenticated = 'SET_AUTHENTICATED',
   RemoveAuthenticated = 'REMOVE_AUTHENTICATED',
   SetUser = 'SET_USER',
+  SetMessages = 'SET_MESSAGES',
   SetNotifications = 'SET_NOTIFICATIONS',
   RemoveUser = 'REMOVE_USER',
   SetPageTitle = 'SET_PAGE_TITLE',
@@ -45,7 +46,7 @@ export enum Types {
 }
 
 export type Payload = {
-  // Authentication 
+  // Authentication
   [Types.ShowDisplayForm]: {
     showDisplayForm: boolean;
   };
@@ -57,7 +58,7 @@ export type Payload = {
   };
   [Types.RemoveMsgForm]: {
     showMsgForm: boolean;
-  }
+  };
   [Types.SetAuthenticated]: {
     authenticated: boolean;
   };
@@ -70,17 +71,20 @@ export type Payload = {
   [Types.RemoveUser]: {
     user: User;
   };
+  [Types.SetMessages]: {
+    messages: DirectMessage[];
+  };
   [Types.SetNotifications]: {
     notifications: Notification[];
-  }
+  };
   // Meta
   [Types.SetPageTitle]: {
     meta: MetaInfo;
-  }
+  };
   // announcements
   [Types.SetAnnouncements]: {
     announcements: Announcement[];
-  }
+  };
 };
 
 export type GlobalActions = ActionMap<Payload>[keyof ActionMap<Payload>];
@@ -104,6 +108,19 @@ export interface SendMessage {
   message: string;
 }
 
+interface MessageUser {
+  _id: string;
+  displayName: string;
+}
+export interface DirectMessage {
+  id: number;
+  body: string;
+  seen: boolean;
+  date: string;
+  sender: MessageUser;
+  recipient: MessageUser;
+}
+
 export interface Notification {
   id: string;
   type: string;
@@ -115,5 +132,6 @@ export interface Notification {
 // * This will be expanded later as necessary
 export interface User {
   name: string;
+  messages: DirectMessage[];
   notifications: Notification[];
 }

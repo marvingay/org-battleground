@@ -38,7 +38,6 @@ const DirectMessageModal: React.FC = () => {
   };
 
   const handleSend = async () => {
-    // TODO: Send POST to backend;
     try {
       const sendMessage: SendMessage = {
         sender: state.user.name,
