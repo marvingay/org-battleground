@@ -3,6 +3,7 @@ import { GlobalContext } from '../context/GlobalState';
 import { Types } from '../types';
 import { Button } from '@material-ui/core';
 import axios from 'axios';
+import { createMessageThreads } from '../utilities/messageHelper';
 
 // TODO: Implement utility to sort user's messages into unique threads per possible recipient (accounting for received but not sent messages)
 
@@ -32,11 +33,14 @@ const Messages: React.FC = () => {
     };
     getMessages();
   }, []);
+
   const openMsgForm = () => {
     dispatch({
       type: Types.ShowMsgForm,
     });
   };
+
+  console.log(createMessageThreads(state.user.messages, state.user.name));
   return (
     <div>
       <Button onClick={openMsgForm} variant='contained'>

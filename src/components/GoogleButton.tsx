@@ -6,7 +6,7 @@ import {
   GoogleLoginResponse,
   GoogleLoginResponseOffline,
 } from 'react-google-login';
-import { CLIENT_ID } from '../services/config';
+import { CLIENT_ID } from '../utilities/config';
 import axios from 'axios';
 import { Types } from '../types';
 import { makeStyles } from '@material-ui/core/styles';

@@ -121,6 +121,12 @@ export interface DirectMessage {
   recipient: MessageUser;
 }
 
+export interface MessageThread {
+  [user: string]: DirectMessage[];
+}
+
+export type DirectMessageThreads = MessageThread[];
+
 export interface Notification {
   id: string;
   type: string;
