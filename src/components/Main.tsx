@@ -1,7 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { GlobalContext } from '../context/GlobalState';
 import { Grid } from '@material-ui/core';
 import { Switch, Route } from 'react-router-dom';
+import axios from 'axios';
+import { Types } from '../types';
 import Home from './Home';
 import Announcements from './Announcements';
 import Messages from './Messages';
@@ -12,7 +14,30 @@ import DirectMessageModal from './DirectMessageModal';
 import Test from './Test';
 
 const Main: React.FC = () => {
-  const { state } = useContext(GlobalContext);
+  const { state, dispatch } = useContext(GlobalContext);
+
+  useEffect(() => {
+    const getMessages = async () => {
+      try {
+        const { data } = await axios.post('/api/messages/all', {
+          name: state.user.name,
+        });
+        console.log('fetching messages');
+        if (data.length === state.user.messages.length) return;
+
+        dispatch({
+          type: Types.SetMessages,
+          payload: { messages: data },
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    if (state.authenticated) {
+      getMessages();
+    }
+  }, [state.user.messages, state.user.name, state.authenticated, dispatch]);
 
   return (
     <Grid className='Home' container>

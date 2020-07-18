@@ -2,10 +2,10 @@ import React, { useContext, useEffect } from 'react';
 import { GlobalContext } from '../context/GlobalState';
 import { Types } from '../types';
 import { Button } from '@material-ui/core';
-import axios from 'axios';
 import { createMessageThreads } from '../utilities/messageHelper';
+import Inbox from './Inbox';
 
-// TODO: Implement utility to sort user's messages into unique threads per possible recipient (accounting for received but not sent messages)
+// TODO: Test createMessageThreads for proper sorting functionality.
 
 const Messages: React.FC = () => {
   const { state, dispatch } = useContext(GlobalContext);
@@ -20,19 +20,17 @@ const Messages: React.FC = () => {
   }, [dispatch, state.meta]);
 
   useEffect(() => {
-    const getMessages = async () => {
-      if (state.user.messages.length) return;
-      const { data } = await axios.post('/api/messages/all', {
-        name: state.user.name,
-      });
-      console.log(data);
-      dispatch({
-        type: Types.SetMessages,
-        payload: { messages: data },
-      });
-    };
-    getMessages();
-  }, []);
+    if (!state.user.messages.length) return;
+    console.log('generating threads');
+    const messageThreads = createMessageThreads(
+      state.user.messages,
+      state.user.name
+    );
+    dispatch({
+      type: Types.SetMsgThreads,
+      payload: { threads: messageThreads },
+    });
+  }, [state.user.messages, state.user.name, dispatch]);
 
   const openMsgForm = () => {
     dispatch({
@@ -40,20 +38,13 @@ const Messages: React.FC = () => {
     });
   };
 
-  console.log(createMessageThreads(state.user.messages, state.user.name));
   return (
     <div>
       <Button onClick={openMsgForm} variant='contained'>
         Write new message
       </Button>
 
-      {state.user.messages.map((message) => {
-        return (
-          <div>
-            From: {message.sender.displayName} <br /> Body: {message.body}
-          </div>
-        );
-      })}
+      <Inbox />
     </div>
   );
 };

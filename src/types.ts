@@ -39,6 +39,7 @@ export enum Types {
   RemoveAuthenticated = 'REMOVE_AUTHENTICATED',
   SetUser = 'SET_USER',
   SetMessages = 'SET_MESSAGES',
+  SetMsgThreads = 'SET_MESSAGE_THREADS',
   SetNotifications = 'SET_NOTIFICATIONS',
   RemoveUser = 'REMOVE_USER',
   SetPageTitle = 'SET_PAGE_TITLE',
@@ -71,8 +72,12 @@ export type Payload = {
   [Types.RemoveUser]: {
     user: User;
   };
+  // User Messages
   [Types.SetMessages]: {
     messages: DirectMessage[];
+  };
+  [Types.SetMsgThreads]: {
+    threads: DirectMessageThreads;
   };
   [Types.SetNotifications]: {
     notifications: Notification[];
@@ -139,5 +144,6 @@ export interface Notification {
 export interface User {
   name: string;
   messages: DirectMessage[];
+  threads: DirectMessageThreads;
   notifications: Notification[];
 }

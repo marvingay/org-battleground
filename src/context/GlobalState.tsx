@@ -11,6 +11,7 @@ const initialState: InitialStateType = {
   user: {
     name: '',
     messages: [],
+    threads: [],
     notifications: [],
   },
   meta: { title: '' },

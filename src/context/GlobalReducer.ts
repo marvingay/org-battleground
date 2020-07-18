@@ -66,6 +66,11 @@ export default (state: InitialStateType, action: GlobalActions) => {
         ...state,
         user: { ...state.user, messages: action.payload.messages },
       };
+    case Types.SetMsgThreads:
+      return {
+        ...state,
+        user: { ...state.user, threads: action.payload.threads },
+      };
     default:
       return state;
   }
