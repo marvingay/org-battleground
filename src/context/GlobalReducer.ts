@@ -71,6 +71,11 @@ export default (state: InitialStateType, action: GlobalActions) => {
         ...state,
         user: { ...state.user, threads: action.payload.threads },
       };
+    case Types.SetActiveThread:
+      return {
+        ...state,
+        user: { ...state.user, activeThread: action.payload.activeThread },
+      };
     default:
       return state;
   }

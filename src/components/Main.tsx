@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from 'react';
 import { GlobalContext } from '../context/GlobalState';
-import { Grid } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
 import { Switch, Route } from 'react-router-dom';
 import axios from 'axios';
-import { Types } from '../types';
+import { Types, Announcement } from '../types';
 import Home from './Home';
 import Announcements from './Announcements';
 import Messages from './Messages';
@@ -16,6 +16,26 @@ import Test from './Test';
 const Main: React.FC = () => {
   const { state, dispatch } = useContext(GlobalContext);
 
+  // Fetch Announcements
+  useEffect(() => {
+    const getAnnouncements = async (currentAnnouncements: Announcement[]) => {
+      const { data } = await axios.get('/api/announcements');
+      // Sort Announcements in most recent order
+      data.sort((a: Announcement, b: Announcement) => (a.id < b.id ? 1 : -1));
+      // Update announcements IF data differs from State
+      if (data.length > currentAnnouncements.length) {
+        dispatch({
+          type: Types.SetAnnouncements,
+          payload: { announcements: data },
+        });
+      }
+    };
+
+    getAnnouncements(state.announcements);
+    // eslint-disable-next-line
+  }, []);
+
+  // Fetch messages
   useEffect(() => {
     const getMessages = async () => {
       try {

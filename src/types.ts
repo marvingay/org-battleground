@@ -40,6 +40,7 @@ export enum Types {
   SetUser = 'SET_USER',
   SetMessages = 'SET_MESSAGES',
   SetMsgThreads = 'SET_MESSAGE_THREADS',
+  SetActiveThread = 'SET_ACTIVE_THREAD',
   SetNotifications = 'SET_NOTIFICATIONS',
   RemoveUser = 'REMOVE_USER',
   SetPageTitle = 'SET_PAGE_TITLE',
@@ -78,6 +79,9 @@ export type Payload = {
   };
   [Types.SetMsgThreads]: {
     threads: DirectMessageThreads;
+  };
+  [Types.SetActiveThread]: {
+    activeThread: DirectMessage[];
   };
   [Types.SetNotifications]: {
     notifications: Notification[];
@@ -145,5 +149,6 @@ export interface User {
   name: string;
   messages: DirectMessage[];
   threads: DirectMessageThreads;
+  activeThread: DirectMessage[];
   notifications: Notification[];
 }
