@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { GlobalContext } from '../context/GlobalState';
 import { Types } from '../types';
+import { formatDistance } from 'date-fns';
 
 import Grid from '@material-ui/core/Grid';
 import Table from '@material-ui/core/Table';
@@ -39,6 +40,12 @@ const Inbox: React.FC = () => {
               const user = Object.keys(thread)[0];
               const recentMessage = thread[user][0].body.slice(0, 40);
               const lastUpdated = thread[user][0].date;
+              const msgDate = new Date(lastUpdated);
+              const currentDate = new Date();
+              const fmtDate = formatDistance(msgDate, currentDate, {
+                includeSeconds: true,
+                addSuffix: true,
+              });
 
               return (
                 <TableRow
@@ -52,7 +59,7 @@ const Inbox: React.FC = () => {
                     {user}
                   </TableCell>
                   <TableCell>{recentMessage}</TableCell>
-                  <TableCell>{lastUpdated}</TableCell>
+                  <TableCell>{fmtDate}</TableCell>
                 </TableRow>
               );
             })}

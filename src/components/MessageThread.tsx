@@ -1,10 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { GlobalContext } from '../context/GlobalState';
+import { DirectMessage } from '../types';
+import { formatRelative } from 'date-fns';
 
 import TextField from '@material-ui/core/TextField';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import { DirectMessage } from '../types';
 
 const MessageThread: React.FC = () => {
   const { state } = useContext(GlobalContext);
@@ -13,14 +14,20 @@ const MessageThread: React.FC = () => {
     setMessage(event.target.value);
   };
   return (
-    <Grid md={6}>
+    <Grid item md={6}>
       <Paper>
         <div>
-          {state.user.activeThread.map((msg: DirectMessage, idx: number) => (
-            <div key={idx}>
-              {msg.sender.displayName} {msg.body} {msg.date}{' '}
-            </div>
-          ))}
+          {state.user.activeThread.map((msg: DirectMessage, idx: number) => {
+            // convert dates to distance from current
+            const msgDate = new Date(msg.date);
+            const currentDate = new Date();
+            const fmtDate = formatRelative(msgDate, currentDate);
+            return (
+              <div key={idx}>
+                {msg.sender.displayName} {msg.body} {fmtDate}{' '}
+              </div>
+            );
+          })}
         </div>
         <TextField
           multiline

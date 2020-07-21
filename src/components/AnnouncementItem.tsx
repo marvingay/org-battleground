@@ -2,6 +2,7 @@ import React from 'react';
 import { Grid, Paper, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Announcement } from '../types';
+import { formatRelative } from 'date-fns';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -27,6 +28,8 @@ const AnnouncementItem: React.FC<{ announcement: Announcement }> = ({
   announcement,
 }) => {
   const { title, content, author, category, date } = announcement;
+  const currentDate = new Date();
+  const annDate = new Date(date);
   const classes = useStyles();
   return (
     <Grid item>
@@ -47,7 +50,9 @@ const AnnouncementItem: React.FC<{ announcement: Announcement }> = ({
             <Typography variant='subtitle1'>Category: {category}</Typography>
           </Grid>
           <Grid className={classes.item} item xs={12} md={4}>
-            <Typography variant='subtitle1'>{date}</Typography>
+            <Typography variant='subtitle1'>
+              {formatRelative(annDate, currentDate)}
+            </Typography>
           </Grid>
         </Grid>
       </Paper>

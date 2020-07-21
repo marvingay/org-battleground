@@ -105,7 +105,7 @@ export interface Announcement {
   title: string;
   content: string;
   author: string;
-  date: string;
+  date: Date;
   category: string;
   hidden: boolean;
 }

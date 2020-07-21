@@ -39,7 +39,6 @@ const Messages: React.FC = () => {
       type: Types.ShowMsgForm,
     });
   };
-
   return (
     <Grid container item>
       <Grid container item xs={12}>
