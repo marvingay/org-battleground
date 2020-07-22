@@ -4,8 +4,9 @@ import { Types } from '../types';
 import { createMessageThreads } from '../utilities/messageHelper';
 import Inbox from './Inbox';
 import MessageThread from './MessageThread';
+import NewMessageButton from './NewMessageButton';
 import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container';
 
 // TODO: Test createMessageThreads for proper sorting functionality.
 
@@ -34,24 +35,17 @@ const Messages: React.FC = () => {
     });
   }, [state.user.messages, state.user.name, dispatch]);
 
-  const openMsgForm = () => {
-    dispatch({
-      type: Types.ShowMsgForm,
-    });
-  };
   return (
-    <Grid container item>
-      <Grid container item xs={12}>
-        <Grid item>
-          <Button onClick={openMsgForm} variant='contained'>
-            Write new message
-          </Button>
+    <Container>
+      <Grid container spacing={0} item>
+        <Grid container item xs={12}>
+          <NewMessageButton />
         </Grid>
-      </Grid>
 
-      <Inbox />
-      <MessageThread />
-    </Grid>
+        <Inbox />
+        <MessageThread />
+      </Grid>
+    </Container>
   );
 };
 

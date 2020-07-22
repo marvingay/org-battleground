@@ -3,6 +3,7 @@ import { GlobalContext } from '../context/GlobalState';
 import { Types } from '../types';
 import { formatDistance } from 'date-fns';
 
+import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -12,8 +13,15 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
+const useStyles = makeStyles((theme) => ({
+  inbox: {
+    maxWidth: '40rem',
+  },
+}));
+
 const Inbox: React.FC = () => {
   const { state, dispatch } = useContext(GlobalContext);
+  const classes = useStyles();
 
   const handleClick = (event: any) => {
     const user = event.currentTarget.dataset.user;
@@ -25,7 +33,7 @@ const Inbox: React.FC = () => {
   };
 
   return (
-    <Grid item md={6}>
+    <Grid className={classes.inbox} item md={6}>
       <TableContainer component={Paper}>
         <Table>
           <TableHead>

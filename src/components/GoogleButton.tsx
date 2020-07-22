@@ -61,7 +61,6 @@ const GoogleButton: React.FC = () => {
             type: Types.ShowDisplayForm,
             payload: { showDisplayForm: true },
           });
-          console.log('work in progress');
         }
       } catch (error) {
         console.log(error);
