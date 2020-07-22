@@ -7,7 +7,6 @@ import { Types, Announcement } from '../types';
 import Home from './Home';
 import Announcements from './Announcements';
 import Messages from './Messages';
-import Notifications from './Notifications';
 import TopNavBar from './TopNavBar';
 import DisplayNameModal from './DisplayNameModal';
 import DirectMessageModal from './DirectMessageModal';
@@ -73,9 +72,6 @@ const Main: React.FC = () => {
         </Route>
         <Route exact path={'/messages'}>
           <Messages />
-        </Route>
-        <Route exact path={'/notifications'}>
-          <Notifications />
         </Route>
         <Route path={'/'}>
           <Test />
