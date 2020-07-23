@@ -26,7 +26,8 @@ const UserNav: React.FC = () => {
           display='block'
           gutterBottom
         >
-          {state.user.name ? `Hi, ${state.user.name}` : `Welcome!`}
+          {state.user.name && <span style={{ color: '#d32f2f' }}>Hi, </span>}
+          {state.user.name ? `${state.user.name}` : `Welcome!`}
         </Typography>
       </Container>
       <Divider />

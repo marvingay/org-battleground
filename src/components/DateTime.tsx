@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
   clock: {
     margin: '0 auto',
+    fontWeight: 'bold',
   },
 }));
 

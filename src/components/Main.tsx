@@ -57,6 +57,25 @@ const Main: React.FC = () => {
     }
   }, [state.user.messages, state.user.name, state.authenticated, dispatch]);
 
+  useEffect(() => {
+    const getNotifications = async () => {
+      try {
+        const { data } = await axios.post('/api/notifications', {
+          action: 'GET',
+          user: state.user.name,
+        });
+        dispatch({
+          type: Types.SetNotifications,
+          payload: { notifications: data },
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getNotifications();
+    // eslint-disable-next-line
+  }, [state.meta.title]);
+
   return (
     <Grid className='Home' container>
       <TopNavBar />
