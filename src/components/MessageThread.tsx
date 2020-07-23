@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     height: '100%',
+    fontWeight: 'bold',
   },
   textbox: {
     width: '100%',
@@ -51,7 +52,12 @@ const MessageThread: React.FC = () => {
             />
           </Grid>
           <Grid xs={3} item>
-            <Button className={classes.button} fullWidth variant='contained'>
+            <Button
+              className={classes.button}
+              color='primary'
+              fullWidth
+              variant='contained'
+            >
               Send
             </Button>
           </Grid>
@@ -71,6 +77,7 @@ const MessageThread: React.FC = () => {
                   displayName={msg.sender.displayName}
                   body={msg.body}
                   date={fmtDate}
+                  user={state.user.name}
                 />
               );
             })}

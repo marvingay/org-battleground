@@ -9,6 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
   button: {
     margin: '10px 0px',
+    fontWeight: 'bold',
   },
 }));
 
@@ -23,7 +24,12 @@ const NewMessageButton: React.FC = () => {
   };
   return (
     <Grid className={classes.button} item>
-      <Button onClick={openMsgForm} variant='contained'>
+      <Button
+        className={classes.button}
+        color='primary'
+        onClick={openMsgForm}
+        variant='contained'
+      >
         Write New Message
       </Button>
     </Grid>

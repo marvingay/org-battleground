@@ -10,7 +10,6 @@ import Messages from './Messages';
 import TopNavBar from './TopNavBar';
 import DisplayNameModal from './DisplayNameModal';
 import DirectMessageModal from './DirectMessageModal';
-import Test from './Test';
 
 const Main: React.FC = () => {
   const { state, dispatch } = useContext(GlobalContext);
@@ -52,7 +51,7 @@ const Main: React.FC = () => {
         console.log(error);
       }
     };
-
+    if (!state.authenticated) return;
     if (state.authenticated) {
       getMessages();
     }
@@ -74,7 +73,7 @@ const Main: React.FC = () => {
           <Messages />
         </Route>
         <Route path={'/'}>
-          <Test />
+          <Home />
         </Route>
       </Switch>
     </Grid>

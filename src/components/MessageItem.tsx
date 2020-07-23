@@ -21,11 +21,17 @@ const MessageItem: React.FC<{
   displayName: string;
   body: string;
   date: string;
-}> = ({ displayName, body, date }) => {
+  user: string;
+}> = ({ displayName, body, date, user }) => {
   const classes = useStyles();
   return (
     <Grid className={classes.container} container item>
-      <Grid className={classes.name} item xs={6}>
+      <Grid
+        className={classes.name}
+        item
+        xs={6}
+        style={{ color: user === displayName ? '#d32f2f' : undefined }}
+      >
         {displayName}
       </Grid>
       <Grid className={classes.date} item xs={6}>

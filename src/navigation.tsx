@@ -13,26 +13,26 @@ interface Navigation {
 export const navItem: Navigation[] = [
   {
     text: 'Home',
-    icon: <DashboardIcon />,
+    icon: <DashboardIcon color='primary' />,
   },
   {
     text: 'Announcements',
-    icon: <AnnouncementIcon />,
+    icon: <AnnouncementIcon color='primary' />,
   },
   {
     text: 'Games',
-    icon: <GamesIcon />,
+    icon: <GamesIcon color='primary' />,
   },
   {
     text: 'Messages',
-    icon: <MessageIcon />,
+    icon: <MessageIcon color='primary' />,
   },
   {
     text: 'Settings',
-    icon: <SettingsIcon />,
+    icon: <SettingsIcon color='primary' />,
   },
   {
     text: 'Help',
-    icon: <HelpIcon />,
+    icon: <HelpIcon color='primary' />,
   },
 ];
