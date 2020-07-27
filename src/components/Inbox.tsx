@@ -17,6 +17,9 @@ const useStyles = makeStyles((theme) => ({
   inbox: {
     maxWidth: '40rem',
   },
+  header: {
+    fontWeight: 'bold',
+  },
 }));
 
 const Inbox: React.FC = () => {
@@ -38,9 +41,9 @@ const Inbox: React.FC = () => {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>Name</TableCell>
-              <TableCell>Recent Message</TableCell>
-              <TableCell>Last Updated</TableCell>
+              <TableCell className={classes.header}>Name</TableCell>
+              <TableCell className={classes.header}>Recent Message</TableCell>
+              <TableCell className={classes.header}>Last Updated</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

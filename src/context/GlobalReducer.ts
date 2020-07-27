@@ -38,6 +38,11 @@ export default (state: InitialStateType, action: GlobalActions) => {
         ...state,
         user: { ...state.user, ...action.payload },
       };
+    case Types.SetNotificationCount:
+      return {
+        ...state,
+        user: { ...state.user, ...action.payload },
+      };
     // Meta Dispatch
     case Types.SetPageTitle:
       return {

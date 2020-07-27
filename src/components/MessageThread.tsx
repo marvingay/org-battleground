@@ -12,7 +12,8 @@ import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    height: '80vh',
+    height: '100%',
+    minHeight: '480px',
     minWidth: '40%',
     maxWidth: '50%',
   },

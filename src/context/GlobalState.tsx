@@ -14,6 +14,7 @@ const initialState: InitialStateType = {
     threads: [],
     activeThread: [],
     notifications: [],
+    notificationCount: 0,
   },
   meta: { title: '' },
   announcements: [],

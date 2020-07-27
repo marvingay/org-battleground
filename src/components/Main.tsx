@@ -3,7 +3,7 @@ import { GlobalContext } from '../context/GlobalState';
 import Grid from '@material-ui/core/Grid';
 import { Switch, Route } from 'react-router-dom';
 import axios from 'axios';
-import { Types, Announcement } from '../types';
+import { Types, Announcement, Notification } from '../types';
 import Home from './Home';
 import Announcements from './Announcements';
 import Messages from './Messages';
@@ -64,9 +64,16 @@ const Main: React.FC = () => {
           action: 'GET',
           user: state.user.name,
         });
+        const notifCount = data.filter(
+          (notif: Notification) => notif.read === false
+        ).length;
         dispatch({
           type: Types.SetNotifications,
           payload: { notifications: data },
+        });
+        dispatch({
+          type: Types.SetNotificationCount,
+          payload: { notificationCount: notifCount },
         });
       } catch (error) {
         console.log(error);
@@ -74,7 +81,7 @@ const Main: React.FC = () => {
     };
     getNotifications();
     // eslint-disable-next-line
-  }, [state.meta.title]);
+  }, [state.meta.title, state.user.notificationCount]);
 
   return (
     <Grid className='Home' container>

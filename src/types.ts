@@ -42,6 +42,7 @@ export enum Types {
   SetMsgThreads = 'SET_MESSAGE_THREADS',
   SetActiveThread = 'SET_ACTIVE_THREAD',
   SetNotifications = 'SET_NOTIFICATIONS',
+  SetNotificationCount = 'SET_NOTIFICATION_COUNT',
   RemoveUser = 'REMOVE_USER',
   SetPageTitle = 'SET_PAGE_TITLE',
   SetAnnouncements = 'SET_ANNOUNCEMENTS',
@@ -85,6 +86,9 @@ export type Payload = {
   };
   [Types.SetNotifications]: {
     notifications: Notification[];
+  };
+  [Types.SetNotificationCount]: {
+    notificationCount: number;
   };
   // Meta
   [Types.SetPageTitle]: {
@@ -151,4 +155,5 @@ export interface User {
   threads: DirectMessageThreads;
   activeThread: DirectMessage[];
   notifications: Notification[];
+  notificationCount: number;
 }
