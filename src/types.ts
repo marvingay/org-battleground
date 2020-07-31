@@ -38,6 +38,7 @@ export enum Types {
   SetAuthenticated = 'SET_AUTHENTICATED',
   RemoveAuthenticated = 'REMOVE_AUTHENTICATED',
   SetUser = 'SET_USER',
+  GetMessages = 'GET_MESSAGES',
   SetMessages = 'SET_MESSAGES',
   SetMsgThreads = 'SET_MESSAGE_THREADS',
   SetActiveThread = 'SET_ACTIVE_THREAD',
@@ -75,6 +76,9 @@ export type Payload = {
     user: User;
   };
   // User Messages
+  [Types.GetMessages]: {
+    getMessages: boolean;
+  };
   [Types.SetMessages]: {
     messages: DirectMessage[];
   };
@@ -151,6 +155,7 @@ export interface Notification {
 // * This will be expanded later as necessary
 export interface User {
   name: string;
+  getMessages: boolean;
   messages: DirectMessage[];
   threads: DirectMessageThreads;
   activeThread: DirectMessage[];

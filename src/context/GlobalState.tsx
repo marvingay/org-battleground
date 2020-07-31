@@ -10,6 +10,7 @@ const initialState: InitialStateType = {
   showMsgForm: false,
   user: {
     name: '',
+    getMessages: false,
     messages: [],
     threads: [],
     activeThread: [],

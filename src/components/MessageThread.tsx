@@ -1,7 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { GlobalContext } from '../context/GlobalState';
-import { DirectMessage } from '../types';
+import { DirectMessage, Types } from '../types';
 import { formatDistance } from 'date-fns';
+import axios from 'axios';
 import MessageItem from './MessageItem';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -28,13 +29,37 @@ const useStyles = makeStyles((theme) => ({
 
 const MessageThread: React.FC = () => {
   const classes = useStyles();
-  const { state } = useContext(GlobalContext);
+  const { state, dispatch } = useContext(GlobalContext);
   const [message, setMessage] = useState('');
   const handleChange = (event: any) => {
     setMessage(event.target.value);
   };
-
+  const activeRecipient = () => {
+    const thread = state.user.activeThread;
+    if (thread.length) {
+      const msg = thread[0];
+      return msg.sender.displayName !== state.user.name ? msg.sender.displayName : msg.recipient.displayName;
+    }
+    else {
+      return null;
+    }
+  }
   // TODO: Implement "Send" Message on Thread
+  const handleSendMessage = async () => {
+    if (message.length === 0) return; // TODO: Error handling
+    if (activeRecipient === null) return;
+    try {
+      await axios.post('/api/messages', { message, sender: state.user.name, recipient: activeRecipient() })
+      dispatch({
+        type: Types.GetMessages,
+        payload: { getMessages: true }
+      })
+
+    } catch (error) {
+      console.log(error);
+    }
+
+  }
 
   return (
     <Grid item md={6}>
@@ -57,6 +82,7 @@ const MessageThread: React.FC = () => {
               className={classes.button}
               color='primary'
               fullWidth
+              onClick={handleSendMessage}
               variant='contained'
             >
               Send

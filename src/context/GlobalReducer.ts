@@ -66,6 +66,11 @@ export default (state: InitialStateType, action: GlobalActions) => {
         ...state,
         showMsgForm: false,
       };
+    case Types.GetMessages:
+      return {
+        ...state,
+        user: { ...state.user, ...action.payload },
+      };
     case Types.SetMessages:
       return {
         ...state,

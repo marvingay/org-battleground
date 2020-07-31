@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { GlobalContext } from '../context/GlobalState';
+// import { getMessages } from '../utilities/messageHelper'
 import Grid from '@material-ui/core/Grid';
 import { Switch, Route } from 'react-router-dom';
 import axios from 'axios';
@@ -42,20 +43,21 @@ const Main: React.FC = () => {
         });
         console.log('fetching messages');
         if (data.length === state.user.messages.length) return;
-
         dispatch({
           type: Types.SetMessages,
           payload: { messages: data },
         });
+
       } catch (error) {
         console.log(error);
       }
-    };
+    }
+
     if (!state.authenticated) return;
     if (state.authenticated) {
       getMessages();
     }
-  }, [state.user.messages, state.user.name, state.authenticated, dispatch]);
+  }, [dispatch, state.authenticated, state.user.messages, state.user.name]);
 
   useEffect(() => {
     const getNotifications = async () => {

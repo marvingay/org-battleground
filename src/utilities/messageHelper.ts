@@ -1,4 +1,5 @@
 import { DirectMessage, DirectMessageThreads, MessageThread } from '../types';
+import axios from 'axios';
 
 // Get all unique message connections
 const getUniqueThreads = (
@@ -72,4 +73,21 @@ export const createMessageThreads = (
   const inbox: DirectMessageThreads = sortInbox(messageThreads);
 
   return inbox;
+};
+
+export const getMessages = async (
+  username: string,
+  messages: DirectMessage[]
+) => {
+  try {
+    const { data } = await axios.post('/api/messages/all', {
+      name: username,
+    });
+    console.log('fetching messages');
+    if (data.length === messages.length) return;
+
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
 };

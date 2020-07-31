@@ -2,9 +2,8 @@ import React, { useContext } from 'react';
 import { GlobalContext } from '../context/GlobalState';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Typography } from '@material-ui/core';
-import Button from '@material-ui/core/Button';
-import PersonIcon from '@material-ui/icons/Person';
 import NavBell from './NavBell';
+import UserBtn from './UserBtn';
 
 const useStyles = makeStyles((theme) => ({
   topNav: {
@@ -23,7 +22,6 @@ const TopNavBar: React.FC = () => {
   const classes = useStyles();
   const { state } = useContext(GlobalContext);
 
-  // TODO: Fix Icon spacing
   return (
     <Grid container item spacing={0} className={classes.topNav}>
       <Grid item xs={4}>
@@ -32,11 +30,9 @@ const TopNavBar: React.FC = () => {
         </Typography>
       </Grid>
       <Grid item xs={4} />
-      <Grid item wrap='nowrap' xs={4}>
+      <Grid container item xs={4}>
         <NavBell />
-        <Button>
-          <PersonIcon />
-        </Button>
+        <UserBtn />
       </Grid>
     </Grid>
   );
