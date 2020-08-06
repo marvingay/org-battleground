@@ -17,7 +17,7 @@ const Messages: React.FC = () => {
 
     dispatch({
       type: Types.SetPageTitle,
-      payload: { meta: { ...state.meta, title: 'Messages' } },
+      payload: { title: 'Messages' },
     });
   }, [dispatch, state.meta]);
 

@@ -47,7 +47,7 @@ export default (state: InitialStateType, action: GlobalActions) => {
     case Types.SetPageTitle:
       return {
         ...state,
-        ...action.payload,
+        meta: { ...state.meta, ...action.payload },
       };
     // Announcement Dispatch
     case Types.SetAnnouncements:

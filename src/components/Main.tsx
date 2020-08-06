@@ -11,6 +11,7 @@ import Messages from './Messages';
 import TopNavBar from './TopNavBar';
 import DisplayNameModal from './DisplayNameModal';
 import DirectMessageModal from './DirectMessageModal';
+import Help from './Help';
 
 const Main: React.FC = () => {
   const { state, dispatch } = useContext(GlobalContext);
@@ -99,6 +100,9 @@ const Main: React.FC = () => {
         </Route>
         <Route exact path={'/messages'}>
           <Messages />
+        </Route>
+        <Route exact path={'/help'}>
+          <Help />
         </Route>
         <Route path={'/'}>
           <Home />
