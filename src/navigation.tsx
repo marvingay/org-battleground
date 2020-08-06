@@ -28,10 +28,6 @@ export const navItem: Navigation[] = [
     icon: <MessageIcon color='primary' />,
   },
   {
-    text: 'Settings',
-    icon: <SettingsIcon color='primary' />,
-  },
-  {
     text: 'Help',
     icon: <HelpIcon color='primary' />,
   },
