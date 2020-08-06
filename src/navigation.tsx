@@ -1,6 +1,5 @@
 import React from 'react';
 import DashboardIcon from '@material-ui/icons/Dashboard';
-import SettingsIcon from '@material-ui/icons/Settings';
 import GamesIcon from '@material-ui/icons/Games';
 import MessageIcon from '@material-ui/icons/Message';
 import AnnouncementIcon from '@material-ui/icons/Announcement';
