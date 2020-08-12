@@ -32,7 +32,6 @@ const TopNavBar: React.FC = () => {
       <Grid item xs={4} />
       <Grid container item xs={4}>
         <NavBell />
-        <UserBtn />
       </Grid>
     </Grid>
   );

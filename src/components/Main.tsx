@@ -32,18 +32,17 @@ const Main: React.FC = () => {
     };
 
     getAnnouncements(state.announcements);
-    // eslint-disable-next-line
-  }, []);
+  }, [dispatch, state.announcements]);
 
-  // Fetch messages
+  // Fetch messages, if logged in.
   useEffect(() => {
     const getMessages = async () => {
       try {
         const { data } = await axios.post('/api/messages/all', {
           name: state.user.name,
         });
-        console.log('fetching messages');
         if (data.length === state.user.messages.length) return;
+
         dispatch({
           type: Types.SetMessages,
           payload: { messages: data },
@@ -54,15 +53,17 @@ const Main: React.FC = () => {
       }
     }
 
-    if (!state.authenticated) return;
-    if (state.authenticated) {
+    if (!state.user.name.length) return;
+    if (state.authenticated && state.user.name.length) {
       getMessages();
     }
   }, [dispatch, state.authenticated, state.user.messages, state.user.name]);
 
   useEffect(() => {
+    if (!state.authenticated && !state.user.name.length) return;
     const getNotifications = async () => {
       try {
+
         const { data } = await axios.post('/api/notifications', {
           action: 'GET',
           user: state.user.name,
@@ -70,6 +71,7 @@ const Main: React.FC = () => {
         const notifCount = data.filter(
           (notif: Notification) => notif.read === false
         ).length;
+
         dispatch({
           type: Types.SetNotifications,
           payload: { notifications: data },
@@ -83,8 +85,7 @@ const Main: React.FC = () => {
       }
     };
     getNotifications();
-    // eslint-disable-next-line
-  }, [state.meta.title, state.user.notificationCount]);
+  }, [state.meta.title, state.user.notificationCount, state.authenticated, state.user.name, dispatch]);
 
   return (
     <Grid className='Home' container>

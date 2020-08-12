@@ -8,11 +8,15 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { Types } from '../types';
+import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles((theme) => ({
   icon: {
     width: '20px',
   },
+  menu: {
+    maxHeight: '240px',
+  }
 }));
 
 const NavBell: React.FC = () => {
@@ -45,28 +49,31 @@ const NavBell: React.FC = () => {
   };
 
   return (
-    <div>
+    <Grid item>
       <Button className={classes.icon} onClick={handleClick}>
-        <Badge badgeContent={state.user.notificationCount} color='secondary'>
-          <NotificationsIcon />
+        <Badge badgeContent={state.user.notificationCount} color='secondary' >
+          <NotificationsIcon fontSize='large' />
         </Badge>
       </Button>
       <Menu
         anchorEl={anchorEl}
+        className={classes.menu}
         keepMounted
         onClose={handleClose}
         onEnter={handleEnter}
         open={open}
       >
-        {state.user.notifications.map((notif) => {
+        {state.user.notifications.length ? state.user.notifications.map((notif) => {
           return (
             <MenuItem key={notif.id} onClick={handleClose}>
               {notif.message}
             </MenuItem>
           );
-        })}
+        })
+          : <MenuItem onClick={handleClose}>No Notifications</MenuItem>
+        }
       </Menu>
-    </div>
+    </Grid>
   );
 };
 
