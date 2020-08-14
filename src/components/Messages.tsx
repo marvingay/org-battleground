@@ -50,7 +50,6 @@ const Messages: React.FC = () => {
 
   useEffect(() => {
     if (!state.user.messages.length) return;
-    console.log('generating threads');
     const messageThreads = createMessageThreads(
       state.user.messages,
       state.user.name

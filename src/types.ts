@@ -118,6 +118,8 @@ export interface Announcement {
   hidden: boolean;
 }
 
+export type CurrentAnnouncement = Announcement | null;
+
 // Message Types
 export interface SendMessage {
   sender: string;

@@ -19,7 +19,7 @@ export const navItem: Navigation[] = [
     icon: <AnnouncementIcon color='primary' />,
   },
   {
-    text: 'Games',
+    text: 'Game of the Month',
     icon: <GamesIcon color='primary' />,
   },
   {
