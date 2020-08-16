@@ -12,6 +12,7 @@ import TopNavBar from './TopNavBar';
 import DisplayNameModal from './DisplayNameModal';
 import DirectMessageModal from './DirectMessageModal';
 import Help from './Help';
+import Game from './Game';
 
 const Main: React.FC = () => {
   const { state, dispatch } = useContext(GlobalContext);
@@ -90,14 +91,21 @@ const Main: React.FC = () => {
   return (
     <Grid className='Home' container>
       <TopNavBar />
+
+      {/* Pop-up Modals for various components */}
       {state.showDisplayForm && <DisplayNameModal />}
       {state.showMsgForm && <DirectMessageModal />}
+
+      {/* Navigation Routes */}
       <Switch>
         <Route exact path={'/home'}>
           <Home />
         </Route>
         <Route exact path={'/announcements'}>
           <Announcements />
+        </Route>
+        <Route exact path={'/games'}>
+          <Game />
         </Route>
         <Route exact path={'/messages'}>
           <Messages />

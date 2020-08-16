@@ -118,7 +118,37 @@ export interface Announcement {
   hidden: boolean;
 }
 
-export type CurrentAnnouncement = Announcement | null;
+// Trivia Game Types
+export interface Question {
+  category: string;
+  correct_answer: string;
+  difficulty: string;
+  incorrect_answers: string[];
+  question: string;
+  type: string;
+}
+
+export type QuestionState = Question & { answer: string[] };
+export interface IQuestionObject {
+  question: string;
+  answers: string[];
+  callback: any;
+  userAnswer: any;
+  questionNumber: number;
+}
+
+export interface AnswerObject {
+  question: string;
+  answer: string;
+  correct: boolean;
+  correctAnswer: string;
+}
+
+export enum Difficulty {
+  EASY = 'easy',
+  MEDIUM = 'medium',
+  HARD = 'hard',
+}
 
 // Message Types
 export interface SendMessage {
