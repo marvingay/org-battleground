@@ -2,8 +2,6 @@ import { Difficulty, Question } from '../types';
 import axios from 'axios';
 import { answerRNG } from './utils';
 
-export const nextQuestion = () => {};
-
 export const fetchTriviaQuestions = async (
   amount: number,
   difficulty: Difficulty

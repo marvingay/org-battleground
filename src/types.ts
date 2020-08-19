@@ -132,9 +132,11 @@ export type QuestionState = Question & { answer: string[] };
 export interface IQuestionObject {
   question: string;
   answers: string[];
-  callback: any;
-  userAnswer: any;
+  callback: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  correctAnswer: string;
+  userAnswer: AnswerObject | undefined;
   questionNumber: number;
+  total: number;
 }
 
 export interface AnswerObject {
