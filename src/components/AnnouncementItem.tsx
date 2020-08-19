@@ -6,7 +6,7 @@ import { formatRelative } from 'date-fns';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    width: '65vw',
+    minWidth: '65vw',
     minHeight: 160,
   },
   container: {
