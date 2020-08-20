@@ -1,7 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { GlobalContext } from '../context/GlobalState';
 import { Types, Announcement, } from '../types';
+// Components
 import AnnouncementItem from './AnnouncementItem';
+// Styles
+import Container from '@material-ui/core/Container';
 
 const Home: React.FC = () => {
   const { state, dispatch } = useContext(GlobalContext);
@@ -20,9 +23,9 @@ const Home: React.FC = () => {
     if (state.announcements.length) setCurrentAnnouncement(state.announcements[0]);
   }, [state.announcements])
 
-  return <div>
+  return <Container>
     {currentAnnouncement ? <AnnouncementItem announcement={currentAnnouncement} /> : null}
-  </div>;
+  </Container>;
 };
 
 export default Home;

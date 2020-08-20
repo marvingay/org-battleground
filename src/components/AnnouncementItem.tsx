@@ -39,7 +39,7 @@ const AnnouncementItem: React.FC<{ announcement: Announcement }> = ({
             <Typography className={classes.title} variant='h2'>
               {title}
             </Typography>
-            <Typography variant='subtitle1'>by {author}</Typography>
+            <Typography variant='subtitle1'><span style={{ color: '#d32f2f' }}>by</span> {author}</Typography>
           </Grid>
           <Grid className={classes.item} item xs={12}>
             <Typography className={classes.body} variant='body1'>
@@ -47,7 +47,7 @@ const AnnouncementItem: React.FC<{ announcement: Announcement }> = ({
             </Typography>
           </Grid>
           <Grid className={classes.item} item xs={12} md={8}>
-            <Typography variant='subtitle1'>Category: {category}</Typography>
+            <Typography variant='subtitle1'>Category: <span style={{ color: '#d32f2f' }}>{category}</span></Typography>
           </Grid>
           <Grid className={classes.item} item xs={12} md={4}>
             <Typography variant='subtitle1'>

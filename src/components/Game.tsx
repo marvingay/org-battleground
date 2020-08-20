@@ -13,6 +13,7 @@ const TOTAL = 20;
 const useStyles = makeStyles((theme) => ({
   container: {
     height: '100%',
+    marginTop: '20px'
   },
   startNext: {
     cursor: 'pointer',
