@@ -3,14 +3,24 @@ import { GlobalContext } from '../context/GlobalState';
 import { Types } from '../types';
 import { createMessageThreads } from '../utilities/messageHelper';
 import axios from 'axios';
-import Inbox from './Inbox';
+// Styles
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
+// Components
+import MessageInbox from './MessageInbox';
 import MessageThread from './MessageThread';
 import NewMessageButton from './NewMessageButton';
-import Grid from '@material-ui/core/Grid';
-import Container from '@material-ui/core/Container';
+
+const useStyles = makeStyles((theme) => ({
+  container: {
+    maxHeight: '100%'
+  }
+}))
 
 const Messages: React.FC = () => {
   const { state, dispatch } = useContext(GlobalContext);
+  const classes = useStyles();
 
   useEffect(() => {
     if (state.meta.title === 'Messages') return;
@@ -61,16 +71,16 @@ const Messages: React.FC = () => {
   }, [state.user.messages, state.user.name, dispatch]);
 
   return (
-    <Container>
-      <Grid container spacing={0} item>
+    <Grid className={classes.container} container spacing={0} item>
+      <Container>
         <Grid container item xs={12}>
           <NewMessageButton />
         </Grid>
 
-        <Inbox />
+        <MessageInbox />
         <MessageThread />
-      </Grid>
-    </Container>
+      </Container>
+    </Grid>
   );
 };
 

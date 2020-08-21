@@ -3,20 +3,21 @@ import { GlobalContext } from '../context/GlobalState';
 import { DirectMessage, Types } from '../types';
 import { formatDistance } from 'date-fns';
 import axios from 'axios';
+// Components
 import MessageItem from './MessageItem';
-
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
+// Styles
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import TextField from '@material-ui/core/TextField';
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    height: '100%',
-    minHeight: '480px',
-    minWidth: '40%',
-    maxWidth: '50%',
+    margin: '20px 0',
+    minHeight: '360px',
+    maxHeight: '50%',
+    width: '90%',
   },
   button: {
     height: '100%',
@@ -62,7 +63,7 @@ const MessageThread: React.FC = () => {
   }
 
   return (
-    <Grid item md={6}>
+    <Grid item xs={12} >
       <Paper className={classes.container}>
         <Grid container>
           <Grid xs={9} item>

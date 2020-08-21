@@ -2,27 +2,27 @@ import React, { useContext } from 'react';
 import { GlobalContext } from '../context/GlobalState';
 import { Types } from '../types';
 import { formatDistance } from 'date-fns';
-
-import { makeStyles } from '@material-ui/core/styles';
+// Styles
 import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles((theme) => ({
   inbox: {
-    maxWidth: '40rem',
+    maxWidth: '90%',
   },
   header: {
     fontWeight: 'bold',
   },
 }));
 
-const Inbox: React.FC = () => {
+const MessageInbox: React.FC = () => {
   const { state, dispatch } = useContext(GlobalContext);
   const classes = useStyles();
 
@@ -36,7 +36,7 @@ const Inbox: React.FC = () => {
   };
 
   return (
-    <Grid className={classes.inbox} item md={6}>
+    <Grid className={classes.inbox} item xs={12} >
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
@@ -47,6 +47,14 @@ const Inbox: React.FC = () => {
             </TableRow>
           </TableHead>
           <TableBody>
+            {/* If Empty Inbox, display default message */}
+            {state.user.threads.length === 0 && (
+              <TableRow>
+                <TableCell>Empty inbox?</TableCell>
+                <TableCell>Log-in and Write a New Message to Marvin!</TableCell>
+                <TableCell>Now!</TableCell>
+              </TableRow>)}
+            {/* Map populated threads to inbox */}
             {state.user.threads.map((thread, idx) => {
               const user = Object.keys(thread)[0];
               const recentMessage = thread[user][0].body.slice(0, 40);
@@ -81,4 +89,4 @@ const Inbox: React.FC = () => {
   );
 };
 
-export default Inbox;
+export default MessageInbox;
