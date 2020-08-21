@@ -1,18 +1,20 @@
 import React, { useContext, useEffect } from 'react';
 import { GlobalContext } from '../context/GlobalState';
-// import { getMessages } from '../utilities/messageHelper'
-import Grid from '@material-ui/core/Grid';
 import { Switch, Route } from 'react-router-dom';
-import axios from 'axios';
 import { Types, Announcement, Notification } from '../types';
-import Home from './Home';
+import axios from 'axios';
+// Styles
+import Grid from '@material-ui/core/Grid';
+// Components
 import Announcements from './Announcements';
-import Messages from './Messages';
-import TopNavBar from './TopNavBar';
-import DisplayNameModal from './DisplayNameModal';
 import DirectMessageModal from './DirectMessageModal';
-import Help from './Help';
+import DisplayNameModal from './DisplayNameModal';
 import Game from './Game';
+import Help from './Help';
+import Home from './Home';
+import Messages from './Messages';
+import MobileSidebar from './MobileSidebar';
+import TopNavBar from './TopNavBar';
 
 const Main: React.FC = () => {
   const { state, dispatch } = useContext(GlobalContext);
@@ -95,6 +97,7 @@ const Main: React.FC = () => {
       {/* Pop-up Modals for various components */}
       {state.showDisplayForm && <DisplayNameModal />}
       {state.showMsgForm && <DirectMessageModal />}
+      {state.meta.mobileMenu && <MobileSidebar />}
 
       {/* Navigation Routes */}
       <Switch>

@@ -6,6 +6,7 @@ export type Props = {
 
 interface MetaInfo {
   title: string;
+  mobileMenu: boolean;
 }
 export interface InitialStateType {
   authenticated: boolean;
@@ -46,6 +47,7 @@ export enum Types {
   SetNotificationCount = 'SET_NOTIFICATION_COUNT',
   RemoveUser = 'REMOVE_USER',
   SetPageTitle = 'SET_PAGE_TITLE',
+  ToggleMobileMenu = 'TOGGLE_MOBILE_MENU',
   SetAnnouncements = 'SET_ANNOUNCEMENTS',
 }
 
@@ -96,6 +98,9 @@ export type Payload = {
   };
   // Meta
   [Types.SetPageTitle]: {
+    meta: MetaInfo;
+  };
+  [Types.ToggleMobileMenu]: {
     meta: MetaInfo;
   };
   // announcements

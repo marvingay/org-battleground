@@ -1,14 +1,15 @@
 import React, { useContext, useState } from 'react';
 import { GlobalContext } from '../context/GlobalState';
+import { Types } from '../types';
 import axios from 'axios';
+// Styles
 import Badge from '@material-ui/core/Badge';
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import { Types } from '../types';
-import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles((theme) => ({
   icon: {

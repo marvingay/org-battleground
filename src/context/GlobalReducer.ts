@@ -49,6 +49,12 @@ export default (state: InitialStateType, action: GlobalActions) => {
         ...state,
         meta: { ...state.meta, ...action.payload },
       };
+
+    case Types.ToggleMobileMenu:
+      return {
+        ...state,
+        meta: { ...state.meta, ...action.payload },
+      };
     // Announcement Dispatch
     case Types.SetAnnouncements:
       return {

@@ -17,7 +17,11 @@ const initialState: InitialStateType = {
     notifications: [],
     notificationCount: 0,
   },
-  meta: { title: '' },
+  meta: {
+    title: '',
+    mobileMenu: false,
+
+  },
   announcements: [],
 };
 
