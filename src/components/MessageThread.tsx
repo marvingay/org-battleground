@@ -45,10 +45,19 @@ const MessageThread: React.FC = () => {
       return null;
     }
   }
-  // TODO: Implement "Send" Message on Thread
+
   const handleSendMessage = async () => {
-    if (message.length === 0) return; // TODO: Error handling
+    // Require log-in.
+    if (!state.authenticated) {
+      alert('Please log-in to send messages!')
+      return;
+    }
+    if (message.length === 0) {
+      alert('Message must contain text content!')
+      return;
+    }
     if (activeRecipient === null) return;
+
     try {
       await axios.post('/api/messages', { message, sender: state.user.name, recipient: activeRecipient() })
       dispatch({
