@@ -6,6 +6,7 @@ import GameDisplay from './GameDisplay';
 // Styles
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 
@@ -22,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: '0px 5px 10px rgba(0, 0, 0, 0.25)',
     borderRadius: '10px',
     height: '40px',
-    margin: '20px auto',
+    margin: '20px 0',
     padding: '0 40px',
   },
   score: {
@@ -98,12 +99,14 @@ const Game: React.FC = () => {
   };
 
   return (
-    <Container>
+    <Container className={classes.container}>
 
-      <div className={classes.container}>
+      <div >
         <Typography className={classes.title} variant='h2'>Trivia Rush</Typography>
         {gameOver || userAnswers.length === 50 ? (
-          <Button className={classes.startNext} onClick={startTrivia}>Start</Button>
+          <Grid container justify='center'>
+            <Button className={classes.startNext} onClick={startTrivia}>Start</Button>
+          </Grid>
         )
           : null}
         {!gameOver ? (<Typography className={classes.score} paragraph variant='h3'>Score: <span style={{ color: '#d32f2f' }}>{score}</span></Typography>) : null}
@@ -121,7 +124,9 @@ const Game: React.FC = () => {
         )}
         {!gameOver && !loading && userAnswers.length === number + 1 && number !== 49 && (
 
-          <Button className={classes.startNext} onClick={nextQuestion}>Next Question</Button>
+          <Grid container justify='center'>
+            <Button className={classes.startNext} onClick={nextQuestion}>Next Question</Button>
+          </Grid>
         )}
       </div>
     </Container>
