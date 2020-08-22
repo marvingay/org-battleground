@@ -4,6 +4,7 @@ import { Types } from '../types';
 import axios from 'axios';
 import Button from '@material-ui/core/Button'
 import Container from '@material-ui/core/Container';
+import Link from '@material-ui/core/Link';
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from '@material-ui/core/Typography';
 
@@ -60,7 +61,7 @@ const Help: React.FC = () => {
       </div>
       <div className={classes.qBlock}>
         <Typography className={classes.question} variant='h2'>Do you have a privacy policy?</Typography>
-        <div className={classes.answer}>Yes, you can view it by clicking here.</div>
+        <div className={classes.answer}>Yes, you can view it by clicking <Link href='/privacy' >here</Link></div>
       </div>
       <div className={classes.qBlock}>
         <Typography className={classes.question} variant='h2'>Can I delete my account?</Typography>

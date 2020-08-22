@@ -15,6 +15,7 @@ import Home from './Home';
 import Messages from './Messages';
 import MobileSidebar from './MobileSidebar';
 import TopNavBar from './TopNavBar';
+import Privacy from './Privacy';
 
 const Main: React.FC = () => {
   const { state, dispatch } = useContext(GlobalContext);
@@ -117,6 +118,9 @@ const Main: React.FC = () => {
         </Route>
         <Route exact path={'/help'}>
           <Help />
+        </Route>
+        <Route exact path={'/privacy'}>
+          <Privacy />
         </Route>
         <Route path={'/'}>
           <Home />
