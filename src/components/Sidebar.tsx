@@ -6,7 +6,7 @@ import UserNav from './UserNav';
 import NavItem from './NavItem';
 import DateTime from './DateTime';
 import GoogleButton from './GoogleButton';
-import { navItem } from '../navigation';
+import { navItem } from '../data/navigation';
 
 const useStyles = makeStyles((theme) => ({
   drawer: {

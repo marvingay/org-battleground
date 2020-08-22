@@ -1,0 +1,23 @@
+// ORGBG Superfans Cast
+export const castMembers = [
+  'Chris',
+  'Dee',
+  'Jordan',
+  'Cara',
+  'Rogan',
+  'Ashley',
+  'Paulie',
+  'Tori',
+  'Zach',
+  'Nicole',
+  'Leroy',
+  'Tula',
+  'Josh',
+  'Bayleigh',
+  'Theo',
+  'Nany',
+  'Turbo',
+  'Kam',
+  'Wes',
+  'Laurel',
+];

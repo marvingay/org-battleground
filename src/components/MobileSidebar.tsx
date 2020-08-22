@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { GlobalContext } from '../context/GlobalState';
-import { navItem } from '../navigation';
+import { navItem } from '../data/navigation';
 import { Types } from '../types';
 // Styles
 import Drawer from '@material-ui/core/Drawer'
