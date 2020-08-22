@@ -103,15 +103,16 @@ const GoogleButton: React.FC = () => {
           onFailure={handleLogoutFailure}
         />
       ) : (
-        <GoogleLogin
-          className={classes.login}
-          clientId={CLIENT_ID}
-          onSuccess={onLogin}
-          onFailure={handleLoginFailure}
-          isSignedIn={true}
-          buttonText='Log In'
-        />
-      )}
+          <GoogleLogin
+            className={classes.login}
+            clientId={CLIENT_ID}
+            cookiePolicy={'single_host_origin'}
+            onSuccess={onLogin}
+            onFailure={handleLoginFailure}
+            isSignedIn={true}
+            buttonText='Log In'
+          />
+        )}
     </div>
   );
 };

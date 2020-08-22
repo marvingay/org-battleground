@@ -64,6 +64,8 @@ const Main: React.FC = () => {
 
   useEffect(() => {
     if (!state.authenticated && !state.user.name.length) return;
+    if (state.user.name === '') return;
+
     const getNotifications = async () => {
       try {
 
