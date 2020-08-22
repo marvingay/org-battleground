@@ -32,8 +32,9 @@ const MessageThread: React.FC = () => {
   const classes = useStyles();
   const { state, dispatch } = useContext(GlobalContext);
   const [message, setMessage] = useState('');
-  const handleChange = (event: any) => {
-    setMessage(event.target.value);
+
+  const handleChange = (e: any) => {
+    setMessage(e.target.value);
   };
   const activeRecipient = () => {
     const thread = state.user.activeThread;
@@ -64,6 +65,7 @@ const MessageThread: React.FC = () => {
         type: Types.GetMessages,
         payload: { getMessages: true }
       })
+      setMessage('');
 
     } catch (error) {
       console.log(error);
@@ -84,6 +86,7 @@ const MessageThread: React.FC = () => {
               required
               rowsMax={2}
               size='medium'
+              value={message}
               variant='outlined'
             />
           </Grid>
