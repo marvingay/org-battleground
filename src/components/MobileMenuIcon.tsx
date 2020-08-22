@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import MenuIcon from '@material-ui/icons/Menu';
+import Tooltip from '@material-ui/core/Tooltip';
 
 type Props = {
   callback: () => void;
@@ -9,7 +10,10 @@ type Props = {
 const MobileMenuIcon: React.FC<Props> = ({ callback }) => {
   return (
     <Button onClick={callback}>
-      <MenuIcon />
+      <Tooltip title='Menu'>
+
+        <MenuIcon />
+      </Tooltip>
     </Button>
   )
 }

@@ -3,7 +3,9 @@ import { GlobalContext } from '../context/GlobalState';
 import { Types } from '../types';
 // Styles
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Typography, Hidden } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid'
+import Hidden from '@material-ui/core/Hidden';
+import Typography from '@material-ui/core/Typography';
 // Components
 import MobileMenuIcon from './MobileMenuIcon';
 import NavBell from './NavBell';

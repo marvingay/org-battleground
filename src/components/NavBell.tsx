@@ -10,6 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import NotificationsIcon from '@material-ui/icons/Notifications';
+import Tooltip from '@material-ui/core/Tooltip';
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -51,11 +52,13 @@ const NavBell: React.FC = () => {
 
   return (
     <Grid item>
-      <Button className={classes.icon} onClick={handleClick}>
-        <Badge badgeContent={state.user.notificationCount} color='secondary' >
-          <NotificationsIcon fontSize='large' />
-        </Badge>
-      </Button>
+      <Tooltip title='Notifications'>
+        <Button className={classes.icon} onClick={handleClick}>
+          <Badge badgeContent={state.user.notificationCount} color='secondary' >
+            <NotificationsIcon fontSize='large' />
+          </Badge>
+        </Button>
+      </Tooltip>
       <Menu
         anchorEl={anchorEl}
         className={classes.menu}
