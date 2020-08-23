@@ -1,7 +1,7 @@
 # ORG Battleground
 
-This is a project that will help faciliate the organization and operation of "Online Reality Games" -- featuring a dashboard for for players, a leaderboard, and some interactive challenges.
+This is a project that will help faciliate the organization and operation of **Online Reality Games**, drawing influence from Big Brother, Survivor, and The Challenge.
 
-Made with React and Typescript.
+Made with React and TypeScript.
 
-Connects with a backend written with Express and MongoDB.
+Connects with a [backend](https://github.com/marvingay/orgbg-backend) made with Node.js, Express, and MongoDB.
