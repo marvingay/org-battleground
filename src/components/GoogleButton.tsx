@@ -40,7 +40,7 @@ const GoogleButton: React.FC = () => {
       try {
         // Send OAuth Token to Backend for verification
         const { data, status } = await axios.post(
-          '/auth',
+          '/api/auth',
           `idToken=${response.tokenId}`,
           {
             headers: {
@@ -76,7 +76,7 @@ const GoogleButton: React.FC = () => {
 
   const logout = async () => {
     try {
-      await axios.get('/auth/logout');
+      await axios.get('/api/auth/logout');
       dispatch({
         type: Types.RemoveAuthenticated,
       });
