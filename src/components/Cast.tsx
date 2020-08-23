@@ -34,7 +34,7 @@ const Cast: React.FC = () => {
       </Grid>
       {
         castMembers.map(member => (
-          <Grid xs={3} item>
+          <Grid key={member} xs={3} item>
             <Typography className={classes.cast} variant='body1'>{member}</Typography>
           </Grid>
         ))
