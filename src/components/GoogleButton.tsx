@@ -108,7 +108,7 @@ const GoogleButton: React.FC = () => {
             clientId={CLIENT_ID}
             onSuccess={onLogin}
             onFailure={handleLoginFailure}
-            isSignedIn={true}
+            isSignedIn={false}
             buttonText='Log In'
           />
         )}
