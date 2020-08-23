@@ -6,7 +6,7 @@ import {
   GoogleLoginResponse,
   GoogleLoginResponseOffline,
 } from 'react-google-login';
-import { CLIENT_ID, API_URL } from '../utilities/config';
+import { CLIENT_ID } from '../utilities/config';
 import axios from 'axios';
 import { Types } from '../types';
 import { makeStyles } from '@material-ui/core/styles';
@@ -40,7 +40,7 @@ const GoogleButton: React.FC = () => {
       try {
         // Send OAuth Token to Backend for verification
         const { data, status } = await axios.post(
-          `${API_URL}/api/auth`,
+          '/auth',
           `idToken=${response.tokenId}`,
           {
             headers: {
@@ -76,7 +76,7 @@ const GoogleButton: React.FC = () => {
 
   const logout = async () => {
     try {
-      await axios.get(`${API_URL}/api/auth/logout`);
+      await axios.get('/auth/logout');
       dispatch({
         type: Types.RemoveAuthenticated,
       });

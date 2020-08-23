@@ -3,7 +3,6 @@ import { GlobalContext } from '../context/GlobalState';
 import { Types } from '../types';
 import { createMessageThreads } from '../utilities/messageHelper';
 import axios from 'axios';
-import { API_URL } from '../utilities/config';
 // Styles
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
@@ -36,7 +35,7 @@ const Messages: React.FC = () => {
     if (state.user.getMessages) {
       const getMessages = async () => {
         try {
-          const { data } = await axios.post(`${API_URL}/api/messages/all`, {
+          const { data } = await axios.post('/api/messages/all', {
             name: state.user.name,
           });
           console.log('fetching messages');

@@ -2,8 +2,6 @@ import React, { useContext, useState } from 'react';
 import { GlobalContext } from '../context/GlobalState';
 import { Types, SendMessage } from '../types';
 import axios from 'axios';
-import { API_URL } from '../utilities/config';
-// Styles
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -46,7 +44,7 @@ const DirectMessageModal: React.FC = () => {
         recipient: recipient,
         message: message,
       };
-      await axios.post(`${API_URL}/api/messages`, sendMessage);
+      await axios.post('/api/messages', sendMessage);
       handleClose();
     } catch (error) {
       console.log(error);
