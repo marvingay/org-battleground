@@ -40,7 +40,7 @@ const GoogleButton: React.FC = () => {
       try {
         // Send OAuth Token to Backend for verification
         const { data, status } = await axios.post(
-          '/api/auth',
+          `${process.env.REACT_APP_API_URL}/api/auth`,
           `idToken=${response.tokenId}`,
           {
             headers: {
