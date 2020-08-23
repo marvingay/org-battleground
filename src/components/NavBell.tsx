@@ -2,7 +2,6 @@ import React, { useContext, useState } from 'react';
 import { GlobalContext } from '../context/GlobalState';
 import { Types } from '../types';
 import axios from 'axios';
-import { API_URL } from '../utilities/config';
 // Styles
 import Badge from '@material-ui/core/Badge';
 import Button from '@material-ui/core/Button';
@@ -37,7 +36,7 @@ const NavBell: React.FC = () => {
     if (state.user.notificationCount !== 0) {
 
       try {
-        await axios.post(`${API_URL}/api/notifications`, {
+        await axios.post('/api/notifications', {
           action: 'READ',
           user: state.user.name,
         });
