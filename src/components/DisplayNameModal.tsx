@@ -21,7 +21,7 @@ const DisplayNameModal: React.FC = () => {
   const handleClose = async (event: any) => {
     event.preventDefault();
     try {
-      await axios.put('/api/auth', {
+      await axios.put(`${process.env.REACT_APP_API_URL}/api/auth`, {
         currentName: state.user.name,
         updatedName: displayName,
       });
