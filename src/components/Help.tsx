@@ -2,7 +2,6 @@ import React, { useEffect, useContext } from 'react';
 import { GlobalContext } from '../context/GlobalState';
 import { Types } from '../types';
 import axios from 'axios';
-import { API_URL } from '../utilities/config';
 import Button from '@material-ui/core/Button'
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
@@ -46,7 +45,7 @@ const Help: React.FC = () => {
     e.preventDefault();
 
     try {
-      await axios.delete(`${API_URL}/api/users/${state.user.name}`);
+      await axios.delete(`/api/users/${state.user.name}`);
 
     }
     catch (error) {
