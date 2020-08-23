@@ -1,5 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { GlobalContext } from '../context/GlobalState';
+import { Types } from '../types';
+import { API_URL } from '../utilities/config';
 import axios from 'axios';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -8,7 +10,6 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { Types } from '../types';
 
 const DisplayNameModal: React.FC = () => {
   const { state, dispatch } = useContext(GlobalContext);
@@ -21,7 +22,7 @@ const DisplayNameModal: React.FC = () => {
   const handleClose = async (event: any) => {
     event.preventDefault();
     try {
-      await axios.put('/auth', {
+      await axios.put(`${API_URL}/api/auth`, {
         currentName: state.user.name,
         updatedName: displayName,
       });
