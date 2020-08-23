@@ -60,7 +60,7 @@ const MessageThread: React.FC = () => {
     if (activeRecipient === null) return;
 
     try {
-      await axios.post('/api/messages', { message, sender: state.user.name, recipient: activeRecipient() })
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/messages`, { message, sender: state.user.name, recipient: activeRecipient() })
       dispatch({
         type: Types.GetMessages,
         payload: { getMessages: true }

@@ -36,7 +36,7 @@ const NavBell: React.FC = () => {
     if (state.user.notificationCount !== 0) {
 
       try {
-        await axios.post('/api/notifications', {
+        await axios.post(`${process.env.REACT_APP_API_URL}/api/notifications`, {
           action: 'READ',
           user: state.user.name,
         });

@@ -23,7 +23,7 @@ const Main: React.FC = () => {
   // Fetch Announcements
   useEffect(() => {
     const getAnnouncements = async (currentAnnouncements: Announcement[]) => {
-      const { data } = await axios.get('/api/announcements');
+      const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/api/announcements`);
       // Sort Announcements in most recent order
       data.sort((a: Announcement, b: Announcement) => (a.id < b.id ? 1 : -1));
       // Update announcements IF data differs from State
@@ -42,7 +42,7 @@ const Main: React.FC = () => {
   useEffect(() => {
     const getMessages = async () => {
       try {
-        const { data } = await axios.post('/api/messages/all', {
+        const { data } = await axios.post(`${process.env.REACT_APP_API_URL}/api/messages/all`, {
           name: state.user.name,
         });
         if (data.length === state.user.messages.length) return;
@@ -71,7 +71,7 @@ const Main: React.FC = () => {
       if (state.user.name === '' || !state.authenticated) return;
       try {
 
-        const { data } = await axios.post('/api/notifications', {
+        const { data } = await axios.post(`${process.env.REACT_APP_API_URL}/api/notifications`, {
           action: 'GET',
           user: state.user.name,
         });

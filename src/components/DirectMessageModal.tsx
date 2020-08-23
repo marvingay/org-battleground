@@ -44,7 +44,7 @@ const DirectMessageModal: React.FC = () => {
         recipient: recipient,
         message: message,
       };
-      await axios.post('/api/messages', sendMessage);
+      await axios.post(`${process.env.REACT_APP_API_URL}/api/messages`, sendMessage);
       handleClose();
     } catch (error) {
       console.log(error);

@@ -45,7 +45,7 @@ const Help: React.FC = () => {
     e.preventDefault();
 
     try {
-      await axios.delete(`/api/users/${state.user.name}`);
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/users/${state.user.name}`);
 
     }
     catch (error) {
