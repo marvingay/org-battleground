@@ -68,6 +68,7 @@ const Main: React.FC = () => {
     if (state.user.name === '') return;
 
     const getNotifications = async () => {
+      if (state.user.name === '' || !state.authenticated) return;
       try {
 
         const { data } = await axios.post('/api/notifications', {
