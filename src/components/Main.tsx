@@ -3,6 +3,7 @@ import { GlobalContext } from '../context/GlobalState';
 import { Switch, Route } from 'react-router-dom';
 import { Types, Announcement, Notification } from '../types';
 import axios from 'axios';
+import { API_URL } from '../utilities/config';
 // Styles
 import Grid from '@material-ui/core/Grid';
 // Components
@@ -23,7 +24,7 @@ const Main: React.FC = () => {
   // Fetch Announcements
   useEffect(() => {
     const getAnnouncements = async (currentAnnouncements: Announcement[]) => {
-      const { data } = await axios.get('/api/announcements');
+      const { data } = await axios.get(`${API_URL}/api/announcements`);
       // Sort Announcements in most recent order
       data.sort((a: Announcement, b: Announcement) => (a.id < b.id ? 1 : -1));
       // Update announcements IF data differs from State
@@ -42,7 +43,7 @@ const Main: React.FC = () => {
   useEffect(() => {
     const getMessages = async () => {
       try {
-        const { data } = await axios.post('/api/messages/all', {
+        const { data } = await axios.post(`${API_URL}/api/messages/all`, {
           name: state.user.name,
         });
         if (data.length === state.user.messages.length) return;
@@ -70,7 +71,7 @@ const Main: React.FC = () => {
     const getNotifications = async () => {
       try {
 
-        const { data } = await axios.post('/api/notifications', {
+        const { data } = await axios.post(`${API_URL}/api/notifications`, {
           action: 'GET',
           user: state.user.name,
         });
