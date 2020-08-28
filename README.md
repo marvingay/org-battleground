@@ -4,6 +4,6 @@ This is a project that will help faciliate the organization and operation of **O
 
 Made with React and TypeScript.
 
-Connects with a [backend](https://github.com/marvingay/orgbg-backend) made with Node.js, Express, and MongoDB.
+Connects with a [backend](https://github.com/marvingay/orgbg-backend) made with TypeScript, Node.js, Express, and MongoDB.
 
 Website: https://orgbattleground.club/
